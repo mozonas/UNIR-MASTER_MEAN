@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumen de las clases semanaº 1: repaso de conceptos de HTML5 y CSS3</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+        <header>
+            <title>
+                <h1>Resumen de las clases semanaº 1: repaso de conceptos de HTML5 y CSS3</h1>
+            </title>
+        </header>
+        <main>
+            <navigation>
+                <ul>
+                    <li><a href="#html5">HTML5</a></li>
+                    <li><a href="#css3">CSS3</a></li>
+                </ul>
+            </navigation>
+            <section>
+                <article id="html5">
+                    <h2>HTML5</h2>
+                    <p>HTML5 es la quinta revisión del lenguaje HTML, que se utiliza para estructurar y presentar contenido en la web. Introduce nuevas etiquetas y atributos que facilitan la creación de páginas web más semánticas y accesibles.</p>
+                    <br>
+                    <p>Podemos hacer uso del pluggin incluyído en VSC "emmet" para facilitarnos el trabajo: <br>
+                    Por ejemplo, si queremos crear una estructura básica de HTML5, podemos escribir "! + tabulador"? o "html:5 + enter" y Emmet generará automáticamente el código necesario para una página HTML5 básica.
+                    <br>
+                    Aquí tenemos un <a href="https://emmet.io/">enlace</a> a la página oficial de Emmet para más información, o inluso un <a href="https://docs.emmet.io/cheatsheet-a5.pdf">enlace</a> al pdf resumen de atajos de Emmet.
+                    </p>
+                    <p>
+                        La estructura básica de un doc html incluye:
+                        <ul>
+                            <li><strong>&lt;!DOCTYPE html&gt;</strong>: Declara el tipo de documento y la versión de HTML.</li>
+                            <li><strong>&lt;html&gt;</strong>: Elemento raíz que contiene todo el contenido de la página.</li>
+                            <!-- explicación head -->
+                            <li>
+                                <p><strong>&lt;head&gt;</strong>: Contiene metadatos, enlaces a hojas de estilo, scripts, y el título de la página.</p>
+                                <ol>
+                                    <li><strong>&lt;meta charset="UTF-8"&gt;</strong>: Define la codificación de caracteres.</li>
+                                    <li><strong>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</strong>: Hace que la página sea responsiva en dispositivos móviles.</li>
+                                    <li><strong>&lt;title&gt;</strong>: Define el título de la página que aparece en la pestaña del navegador.</li>
+                                    <li><strong>&lt;link rel="stylesheet" href="styles.css"&gt;</strong>: Enlaza una hoja de estilo externa para dar estilo a la página.</li>
+                                    <li><strong>&lt;script src="script.js"&gt;&lt;/script&gt;</strong>: Enlaza un archivo JavaScript externo para agregar funcionalidad a la página.</li>
+                                    <li>Si quisiéramos añadir metas: <br> <strong></strong>&lt;meta name="keywords" content="palabra clave1, palabra clave2, palabra clave3"&gt;</strong></li>
+                                </ol>
+                            </li>
+                            <!-- explicación body -->
+                            <li>
+                                <p><strong>&lt;body&gt;</strong>: Contiene el contenido visible de la página, como texto, imágenes, enlaces, etc.</p>
+                                <p>Podemos estructurar el contenido del documento con una serie de etiquetas que tienen sentido semántico po sí mismas:</p>
+                                <br>
+                                <ol>
+                                    <li><strong>&lt;header&gt;</strong>: Define el encabezado de una página o sección.</li>
+                                    <li><strong>&lt;nav&gt;</strong>: Define un bloque de navegación con enlaces.</li>
+                                    <li><strong>&lt;main&gt;</strong>: Define el contenido principal de la página.</li>
+                                    <li><strong>&lt;section&gt;</strong>: Define una sección genérica de contenido.</li>
+                                    <li><strong>&lt;article&gt;</strong>: Define un contenido independiente y autocontenido.</li>
+                                    <li><strong>&lt;aside&gt;</strong>: Define contenido relacionado pero separado del contenido principal, como barras laterales.</li>
+                                    <li><strong>&lt;footer&gt;</strong>: Define el pie de página de una página o sección.</li>  
+                                </ol>
+                                <div class="note">
+                                <p>NOTA:<br>Tanto <strong>header</strong> como <strong>footer</strong> pueden repetirse en los diferenter <strong>articles o sections</strong> repartidos en el <strong>main</strong></p>
+                                </div>
+                                
+                                <p>Dentro del body podemos encontrar múltiples etiquetas como:</p>
+                                <ol>
+                                    <li><strong>&lt;h1&gt; a &lt;h6&gt;</strong>: Encabezados de diferentes niveles.</li>
+                                    <li><strong>&lt;p&gt;</strong>: Párrafos de texto.</li>
+                                    <li><strong>&lt;a href="url"&gt;</strong>: Enlaces a    otras páginas o recursos.</li>
+                                    <li><strong>&lt;img src="imagen.jpg" alt="descripción"&gt;</strong>: Imágenes con una descripción alternativa.</li>
+                                    <li><strong>&lt;div&gt;</strong>: Contenedores genéricos para agrupar elementos.</li>
+                                    <li><strong>&lt;span&gt;</strong>: Contenedores en línea para agrupar texto o elementos.</li>
+                                    <li><strong>&lt;ul&gt; y &lt;ol&gt;</strong>: Listas no ordenadas y ordenadas.</li>
+                                    <li><strong>&lt;li&gt;</strong>: Elementos de lista dentro de listas.</li>
+                                    <li><strong>&lt;header&gt;</strong>: Encabezado de una sección o página.</li>
+                                    <li><strong>&lt;footer&gt;</strong>: Pie de página de una sección o página.</li>
+                                    <li><strong>&lt;section&gt;</strong>: Sección genérica de contenido.</li>
+                                    <li><strong>&lt;article&gt;</strong>: Contenido independiente y autocontenido.</li>
+                                    <li><strong>&lt;nav&gt;</strong>: Navegación de la página.</li>
+                                    <li><strong>&lt;form&gt;</strong>: Formularios para la entrada de datos del usuario.</li>
+                                    <li><strong>&lt;input&gt;</strong>: Campos de entrada dentro de formularios.</li>
+                                    <li><strong>&lt;button&gt;</strong>: Botones interactivos.</li> 
+                                </ol>
+                                <div class="note">
+                                <p>NOTA:<br>
+                                Existen infinidad de etiquetas HTML5, pero estas son algunas de las más comunes y utilizadas para estructurar y presentar contenido en la web.<br>
+                                Es importante utilizar las etiquetas de manera semántica para mejorar la accesibilidad y el SEO de las páginas web.
+                                Para más información, puedes consultar la <a href="https://developer.mozilla.org/es/docs/Web/HTML/Element">documentación oficial de HTML5</a>.
+                                </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </p>
+                </article>
+                <article id="css3">
+                    <h2>CSS3</h2>
+                    <p>CSS3 es la tercera versión del lenguaje CSS, que se utiliza para diseñar y dar estilo a las páginas web. Incluye nuevas características como transiciones, animaciones, y flexbox, que permiten crear diseños más complejos y atractivos.</p>
+                    <br>
+                    <p>Podemos incluir CSS3 en nuestros documentos HTML de tres maneras diferentes:</p>
+                    <ol>
+                        <li><strong>CSS Externo:</strong> Se crea un archivo separado con extensión .css (por ejemplo, styles.css) y se enlaza al documento HTML utilizando la etiqueta <code>&lt;link&gt;</code> dentro del <code>&lt;head&gt;</code>. Ejemplo:
+                            <br>
+                            <code>&lt;link rel="stylesheet" href="styles.css"&gt;</code>
+                        </li>
+                        <li><strong>CSS Interno:</strong> Se incluye dentro de una etiqueta <code>&lt;style&gt;</code> en el <code>&lt;head&gt;</code> del documento HTML. Ejemplo:
+                            <br>
+                            <code>&lt;style&gt;
+                                body {
+                                    background-color: lightblue;
+                                }
+                            &lt;/style&gt;
+                            </code>
+                        </li>
+                        <li><strong>CSS Inline:</strong> Se aplica directamente a un elemento HTML utilizando el atributo <code>style</code>. Ejemplo:
+                            <br>
+                            <code>&lt;h1 style="color: blue;"&gt;Hola Mundo&lt;/h1&gt;</code>
+                        </li>   
+                    </ol>
+                    <p>Es recomendable utilizar CSS externo para mantener el código organizado y facilitar el mantenimiento.</p>
+                    <br>
+                    <p>Siempre empezaremos el doc css con:<br>
+
+                    <code>/* CSS Document */</code>
+                    <br>
+                    <p>Un ejemplo muy común al empezar a trabajar con CSS es el siguiente reset CSS, que nos ayuda a eliminar los márgenes y paddings por defecto de los navegadores, y a establecer un box-sizing consistente:</p> 
+                    <code>
+                        *{
+                            margin: 0;
+                            padding: 0;
+                            box-sizing: border-box;     
+                        }
+                    </code>
+
+                    <br>
+                    </p>
+                    <ul>
+                        <li><strong>margin</strong>: Establece el margen externo de todos los elementos a 0, eliminando cualquier espacio adicional alrededor de ellos.</li>
+                        <li><strong>padding</strong>: Establece el relleno interno de todos los elementos a 0, eliminando cualquier espacio adicional dentro de ellos.</li>
+                        <li><strong>box-sizing: border-box</strong>: Cambia el modelo de caja para que el ancho y alto de los elementos incluyan el padding y el borde, lo que facilita el control del tamaño total de los elementos.</li>      
+                        <li>Este reset CSS es útil para crear un punto de partida consistente para el diseño de páginas web, ya que los diferentes navegadores aplican estilos predeterminados que pueden variar.</li>
+                        <li>Al utilizar este reset, podemos asegurarnos de que los elementos se comporten de manera predecible y uniforme en todos los navegadores.</li>
+                        <li>Después de aplicar este reset, podemos comenzar a agregar nuestros propios estilos CSS para diseñar la página web según nuestras necesidades.</li>
+                        <li>Para más información sobre CSS3, puedes consultar la <a href="https://developer.mozilla.org/es/docs/Web/CSS">documentación oficial de CSS3</a>.</li>
+                    </ul>
+                    <ol>
+                            <li>Uso de <a href="#flexbox-use">flexbox</a> y <a href="#grid-use">grid</a>para crear diseños responsivos y adaptativos.</li>
+                            <li>uso de <a href="#bootstrap-use">BOOTSTRAP</a> para agilizar el desarrollo de interfaces web.</li>
+                            <li>Implementación de transiciones y animaciones para mejorar la experiencia del usuario.</li>
+                            <li>Utilización de media queries para adaptar el diseño a diferentes tamaños de pantalla.</li>  
+                            <li>Optimización del rendimiento mediante la minimización y combinación de archivos CSS.</li>
+                            <li>Aplicación de buenas prácticas de accesibilidad y usabilidad en el diseño web.</li>
+                            <li>Mantenimiento y actualización continua de los estilos CSS para asegurar la compatibilidad con nuevas tecnologías y estándares web.</li>
+                            <li>Exploración de nuevas características y módulos de CSS3 a medida que se desarrollan y se implementan en los navegadores.</li>
+                            <li>Colaboración con otros desarrolladores y diseñadores para crear experiencias web atractivas y funcionales.</li>
+                            
+                           
+                    </ol>
+                </article>
+                <!-- Sub-sections de CSS3: uso de flexbox -->
+                <article id="flexbox-use">
+                    <header>
+                        <h3>Uso de CSS Flexbox</h3>    
+                    </header>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vestibulum quam vel orci aliquet lacinia. Quisque cursus metus nec libero bibendum ultricies. Ut sit amet sem nec diam ornare facilisis. Aliquam ac tristique neque, ac pharetra tortor. Nam in consectetur nibh, eu placerat ligula. Nunc ultrices, elit non interdum varius, nunc ante sagittis ex, sed tincidunt felis justo id dui. In vestibulum ipsum a commodo pulvinar.
+
+                        Mauris a justo blandit, commodo tortor nec, imperdiet leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut eget eleifend ipsum. Sed ut fermentum sapien. Suspendisse at orci egestas, sodales dolor vel, facilisis lorem. Praesent venenatis feugiat luctus. Mauris aliquet lobortis massa id suscipit.
+
+                        Proin sit amet sapien nec purus volutpat auctor. Praesent aliquet venenatis odio in efficitur. Nullam porta quis libero at scelerisque. Phasellus eleifend eros ex, eget volutpat tellus tempor ac. Integer pretium ex quis est faucibus dapibus. Donec semper ac est sed ornare. Duis quis ex a leo iaculis lobortis.
+
+                        Vestibulum faucibus justo massa, quis pharetra felis aliquet at. Aliquam eu blandit neque. Sed a dui eu massa pretium bibendum. Aenean dapibus faucibus neque, vitae vulputate metus. Cras vulputate lobortis velit ut tincidunt. Sed ut volutpat tortor, sed pulvinar nibh. Proin sagittis nunc urna, id imperdiet nisl sollicitudin eu. Fusce risus ante, varius id ultrices quis, laoreet nec risus. Etiam nisi nisi, sodales nec commodo sed, euismod in ex. Duis vel ex dolor.
+
+                        Mauris non hendrerit justo, ac tempus tellus. Aliquam vel sodales metus. Ut pharetra dui eget enim pretium, nec commodo nisi tincidunt. Suspendisse potenti. Integer ut metus nec purus semper rutrum et nec nisl. In hac habitasse platea dictumst. Maecenas ullamcorper ultricies feugiat. Sed lobortis gravida elementum. Cras rutrum enim dolor, eget feugiat nisi eleifend non. Nunc tincidunt ut tortor sit amet scelerisque. Morbi ultricies semper suscipit. Fusce tempor, diam sed pulvinar dignissim, lectus neque venenatis libero, vel efficitur velit velit vel dolor. Etiam posuere quis est non varius. Donec dictum risus urna, at tempor nisi ornare vel.
+                    </p>
+                </article>
+                <!-- Sub-sections de CSS3: uso de grid -->
+                <article id="grid-use">
+                    <header>
+                        <h3>Uso de CSS Grid</h3>    
+                    </header>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vestibulum quam vel orci aliquet lacinia. Quisque cursus metus nec libero bibendum ultricies. Ut sit amet sem nec diam ornare facilisis. Aliquam ac tristique neque, ac pharetra tortor. Nam in consectetur nibh, eu placerat ligula. Nunc ultrices, elit non interdum varius, nunc ante sagittis ex, sed tincidunt felis justo id dui. In vestibulum ipsum a commodo pulvinar.
+
+                        Mauris a justo blandit, commodo tortor nec, imperdiet leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut eget eleifend ipsum. Sed ut fermentum sapien. Suspendisse at orci egestas, sodales dolor vel, facilisis lorem. Praesent venenatis feugiat luctus. Mauris aliquet lobortis massa id suscipit.
+
+                        Proin sit amet sapien nec purus volutpat auctor. Praesent aliquet venenatis odio in efficitur. Nullam porta quis libero at scelerisque. Phasellus eleifend eros ex, eget volutpat tellus tempor ac. Integer pretium ex quis est faucibus dapibus. Donec semper ac est sed ornare. Duis quis ex a leo iaculis lobortis.
+
+                        Vestibulum faucibus justo massa, quis pharetra felis aliquet at. Aliquam eu blandit neque. Sed a dui eu massa pretium bibendum. Aenean dapibus faucibus neque, vitae vulputate metus. Cras vulputate lobortis velit ut tincidunt. Sed ut volutpat tortor, sed pulvinar nibh. Proin sagittis nunc urna, id imperdiet nisl sollicitudin eu. Fusce risus ante, varius id ultrices quis, laoreet nec risus. Etiam nisi nisi, sodales nec commodo sed, euismod in ex. Duis vel ex dolor.
+
+                        Mauris non hendrerit justo, ac tempus tellus. Aliquam vel sodales metus. Ut pharetra dui eget enim pretium, nec commodo nisi tincidunt. Suspendisse potenti. Integer ut metus nec purus semper rutrum et nec nisl. In hac habitasse platea dictumst. Maecenas ullamcorper ultricies feugiat. Sed lobortis gravida elementum. Cras rutrum enim dolor, eget feugiat nisi eleifend non. Nunc tincidunt ut tortor sit amet scelerisque. Morbi ultricies semper suscipit. Fusce tempor, diam sed pulvinar dignissim, lectus neque venenatis libero, vel efficitur velit velit vel dolor. Etiam posuere quis est non varius. Donec dictum risus urna, at tempor nisi ornare vel.
+                    </p>
+                    <div>
+                        <p>Ejemplo de código CSS Grid:</p>
+                        <code>
+                            .container { <br>
+                                display: grid; <br>
+                                grid-template-columns: repeat(3, 1fr); <br>
+                                gap: 10px; <br>
+                            } <br>
+                            .item { <br>
+                                background-color: lightblue; <br>
+                                padding: 20px; <br>
+                                text-align: center; <br>
+                            } <br>
+                        </code>
+                    </div>
+                    <div class="container">
+                        <div class="item">Elemento 1</div>
+                        <div class="item">Elemento 2</div>
+                        <div class="item">Elemento 3</div>
+                        <div class="item">Elemento 4</div>
+                        <div class="item">Elemento 5</div>
+                        <div class="item">Elemento 6</div>
+                    </div>
+                </article>
+                <!-- Sub-sections de CSS3: uso de grid -->
+                <article id="bootstrap-use">
+                    <header>
+                        <h3>Uso de CSS BOOTSTRAP</h3>    
+                    </header>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vestibulum quam vel orci aliquet lacinia. Quisque cursus metus nec libero bibendum ultricies. Ut sit amet sem nec diam ornare facilisis. Aliquam ac tristique neque, ac pharetra tortor. Nam in consectetur nibh, eu placerat ligula. Nunc ultrices, elit non interdum varius, nunc ante sagittis ex, sed tincidunt felis justo id dui. In vestibulum ipsum a commodo pulvinar.
+
+                        Mauris a justo blandit, commodo tortor nec, imperdiet leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut eget eleifend ipsum. Sed ut fermentum sapien. Suspendisse at orci egestas, sodales dolor vel, facilisis lorem. Praesent venenatis feugiat luctus. Mauris aliquet lobortis massa id suscipit.
+
+                        Proin sit amet sapien nec purus volutpat auctor. Praesent aliquet venenatis odio in efficitur. Nullam porta quis libero at scelerisque. Phasellus eleifend eros ex, eget volutpat tellus tempor ac. Integer pretium ex quis est faucibus dapibus. Donec semper ac est sed ornare. Duis quis ex a leo iaculis lobortis.
+
+                        Vestibulum faucibus justo massa, quis pharetra felis aliquet at. Aliquam eu blandit neque. Sed a dui eu massa pretium bibendum. Aenean dapibus faucibus neque, vitae vulputate metus. Cras vulputate lobortis velit ut tincidunt. Sed ut volutpat tortor, sed pulvinar nibh. Proin sagittis nunc urna, id imperdiet nisl sollicitudin eu. Fusce risus ante, varius id ultrices quis, laoreet nec risus. Etiam nisi nisi, sodales nec commodo sed, euismod in ex. Duis vel ex dolor.
+
+                        Mauris non hendrerit justo, ac tempus tellus. Aliquam vel sodales metus. Ut pharetra dui eget enim pretium, nec commodo nisi tincidunt. Suspendisse potenti. Integer ut metus nec purus semper rutrum et nec nisl. In hac habitasse platea dictumst. Maecenas ullamcorper ultricies feugiat. Sed lobortis gravida elementum. Cras rutrum enim dolor, eget feugiat nisi eleifend non. Nunc tincidunt ut tortor sit amet scelerisque. Morbi ultricies semper suscipit. Fusce tempor, diam sed pulvinar dignissim, lectus neque venenatis libero, vel efficitur velit velit vel dolor. Etiam posuere quis est non varius. Donec dictum risus urna, at tempor nisi ornare vel.
+                    </p>
+                </article>
+            </section>
+        </main>
+
+        <footer>
+            <p>Resumen creado por Miguel Ozonas</p>
+        </footer>
+</body>
+</html>
