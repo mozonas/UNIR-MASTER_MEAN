@@ -1,8 +1,20 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;     
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px; 
 }
+.note-code{
+    background-color: beige;
+    border: 1px solid rgb(39, 32, 32);
+    padding: 10px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1em;}
+
+    
 a{
     text-decoration: none;
     color: inherit;
@@ -31,14 +43,20 @@ article{
     margin: 2rem   ;
 }
 article ul{
-    margin-left: 2rem;
+    margin-left: 4rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
 article ol{
-margin-left: 2rem;
+margin-left: 4rem;
 margin-top: 1rem;
 margin-bottom: 1rem;
+}
+code{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1em;
+    border: 1px solif rgb(39, 32, 32) ;
+    background-color: beige;
 }
 /*estilos de flexbox*/
  .container0 {  
@@ -51,14 +69,44 @@ margin-bottom: 1rem;
     padding: 20px;  
     text-align: center;  
 }
-
-/*estilos de grid*/
+/*otros estilos flexbox*/
+.example-flexbox{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 20px;
+}
 .container {
+      display: flex;
+      margin-bottom: 10px;
+      border: 2px solid #333;
+      padding: 8px;
+      gap: 10px;
+    }
+    .item {
+      background: #3fa7d6;
+      color: #fff;
+      padding: 10px 0;
+      text-align: center;
+      min-width: 60px;
+      border-radius: 4px;
+      flex: 1;
+    }
+    /* Otras variantes para ejemplos */
+    .row { flex-direction: row; }
+    .col { flex-direction: column; height: 180px; }
+    .sb { justify-content: space-between; }
+    .center { justify-content: center; }
+    .wrap { flex-wrap: wrap; max-width: 250px;}
+    .align-center { align-items: center; height: 90px;}
+    .grow .item:nth-child(2) { flex-grow: 2; background: #49be25;}
+/*fin*/
+/*estilos de grid*/
+.container-grid {
     display: grid; 
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
 }
-.item { 
+.item-grid { 
     background-color: lightblue; 
     padding: 20px; 
     text-align: center; 

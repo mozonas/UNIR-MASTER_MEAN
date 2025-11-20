@@ -125,13 +125,16 @@
                     <code>/* CSS Document */</code>
                     <br>
                     <p>Un ejemplo muy común al empezar a trabajar con CSS es el siguiente reset CSS, que nos ayuda a eliminar los márgenes y paddings por defecto de los navegadores, y a establecer un box-sizing consistente:</p> 
-                    <code>
-                        *{
-                            margin: 0;
-                            padding: 0;
-                            box-sizing: border-box;     
-                        }
-                    </code>
+                    <div class="note-code">
+                        <code>
+                            *{
+                                margin: 0;
+                                padding: 0;
+                                box-sizing: border-box;     
+                            }
+                        </code>
+                    </div>
+
 
                     <br>
                     </p>
@@ -164,30 +167,49 @@
                         <h3>Uso de CSS Flexbox</h3>    
                     </header>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vestibulum quam vel orci aliquet lacinia. Quisque cursus metus nec libero bibendum ultricies. Ut sit amet sem nec diam ornare facilisis. Aliquam ac tristique neque, ac pharetra tortor. Nam in consectetur nibh, eu placerat ligula. Nunc ultrices, elit non interdum varius, nunc ante sagittis ex, sed tincidunt felis justo id dui. In vestibulum ipsum a commodo pulvinar.
+                        ¿Qué es Flexbox?<br>
+                        Flexbox (Flexible Box) es un modelo de diseño de CSS3 pensado para distribuir espacio entre elementos dentro de un contenedor flexible, incluso cuando su tamaño es desconocido o dinámico.
 
-                        Mauris a justo blandit, commodo tortor nec, imperdiet leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut eget eleifend ipsum. Sed ut fermentum sapien. Suspendisse at orci egestas, sodales dolor vel, facilisis lorem. Praesent venenatis feugiat luctus. Mauris aliquet lobortis massa id suscipit.
-
-                        Proin sit amet sapien nec purus volutpat auctor. Praesent aliquet venenatis odio in efficitur. Nullam porta quis libero at scelerisque. Phasellus eleifend eros ex, eget volutpat tellus tempor ac. Integer pretium ex quis est faucibus dapibus. Donec semper ac est sed ornare. Duis quis ex a leo iaculis lobortis.
-
-                        Vestibulum faucibus justo massa, quis pharetra felis aliquet at. Aliquam eu blandit neque. Sed a dui eu massa pretium bibendum. Aenean dapibus faucibus neque, vitae vulputate metus. Cras vulputate lobortis velit ut tincidunt. Sed ut volutpat tortor, sed pulvinar nibh. Proin sagittis nunc urna, id imperdiet nisl sollicitudin eu. Fusce risus ante, varius id ultrices quis, laoreet nec risus. Etiam nisi nisi, sodales nec commodo sed, euismod in ex. Duis vel ex dolor.
-
-                        Mauris non hendrerit justo, ac tempus tellus. Aliquam vel sodales metus. Ut pharetra dui eget enim pretium, nec commodo nisi tincidunt. Suspendisse potenti. Integer ut metus nec purus semper rutrum et nec nisl. In hac habitasse platea dictumst. Maecenas ullamcorper ultricies feugiat. Sed lobortis gravida elementum. Cras rutrum enim dolor, eget feugiat nisi eleifend non. Nunc tincidunt ut tortor sit amet scelerisque. Morbi ultricies semper suscipit. Fusce tempor, diam sed pulvinar dignissim, lectus neque venenatis libero, vel efficitur velit velit vel dolor. Etiam posuere quis est non varius. Donec dictum risus urna, at tempor nisi ornare vel.
+                    <ul>    
+                        <p>Permite alinear y distribuir elementos de manera eficiente en una sola dimensión (fila o columna).</p>
+                        <p>Facilita la creación de diseños responsivos y adaptativos.</p>
+                        <p>Proporciona un control más preciso sobre la alineación, el orden y el tamaño de los elementos.</p>
+                        <h4>Propiedades principales en el contenedor (Padre)</h4> 
+                        <li>display: flex — Activa el modo flexbox.</li>
+                        <li>flex-direction — Dirección (fila o columna) de los elementos ("row", "row-reverse", "column", "column-reverse").</li>
+                        <li>flex-wrap — ¿Permite que los elementos se vayan a otra línea? ("nowrap", "wrap", "wrap-reverse").</li>
+                        <li>justify-content — Alinea en el eje principal ("flex-start", "center", "flex-end", "space-between", "space-around", "space-evenly").</li>
+                        <li>align-items — Alinea en el eje transversal ("flex-start", "center", "flex-end", "stretch", "baseline").</li>
+                        <li>align-content — Espacio entre líneas cuando hay varias (solo si wrap).</li>
+                    </ul>
+                    <ul>    
+                        <h4>Propiedades principales en los ítems (Hijos)</h4>  
+                        <li>order — Orden visual de los elementos.</li>
+                        <li>flex-grow — Capacidad para crecer si hay espacio.</li>
+                        <li>flex-shrink — Capacidad para reducirse si hay poco espacio.</li>
+                        <li>flex-basis — Tamaño base inicial.</li>
+                        <li>flex — Shorthand de las anteriores.</li>
+                        <li>align-self — Sobrescribe alineación de un hijo concreto.</li> 
+                    </ul>   
                     </p>
+                    <br>
                     <div>
                         <p>Ejemplo de código CSS Flexbox:</p>
-                        <code>
-                            .container0 { <br>
-                                display: flex; <br>
-                                justify-content: space-around; <br>
-                                align-items: center; <br>
-                            } <br>
-                            .item0 { <br>
-                                background-color: lightcoral; <br>
-                                padding: 20px; <br>
-                                text-align: center; <br>
-                            } <br>
-                        </code>
+                        <div class="note-code">
+                            <code>
+                                .container0 { <br>
+                                    display: flex; <br>
+                                    justify-content: space-around; <br>
+                                    align-items: center; <br>
+                                } <br>
+                                .item0 { <br>
+                                    background-color: lightcoral; <br>
+                                    padding: 20px; <br>
+                                    text-align: center; <br>
+                                } <br>
+                            </code>
+                        </div>
+
                         
                         <div>
                             <div class="container0">
@@ -200,7 +222,150 @@
                                 <div class="item0">Elemento 7</div>
                             </div>
                         </div>
+                        <!-- Nota: agregar más ejemplos de uso de flexbox -->
+                    </div>
+                    <BR><BR>
+                    <div><h4>Otros ejemplos de uso de Flexbox:</h4>
+                        <div class="example-flexbox">
+                        <h5>Dirección por defecto (fila)</h5>
+                        <p>Por defecto, los elementos se organizan en una fila horizontal.</p>
+                        <div class="note-code">
+                            <code>
+                                .container { <br>
+                                    display: flex; <br>
+                                    flex-direction: row; <br>
+                                } <br><br>
+                            </code>
+                        </div>
 
+                        <div class="container row">
+                        <div class="item">Uno</div>
+                        <div class="item">Dos</div>
+                        <div class="item">Tres</div>
+                        </div>
+                        </div>
+
+                        <div class="example-flexbox">
+                        <h5>Dirección columna</h5>
+                        <p>Los elementos se organizan en una columna vertical.</p>
+                        <div class="note-code">
+                            <code>
+                                .container { <br>
+                                    display: flex; <br>
+                                    flex-direction: column; <br>
+                                } 
+                            </code>
+                        </div>
+
+                        <br><br>
+                        <div class="container col">
+                        <div class="item">A</div>
+                        <div class="item">B</div>
+                        <div class="item">C</div>
+                        </div>
+                        </div>
+
+                        <div class="example-flexbox">
+                        <h5>Justificar espacio entre (space-between)</h5>
+                        <p>Los elementos se distribuyen con espacio igual entre ellos.</p>
+                        <div class="note-code">
+                            <code>
+                                .container { <br>
+                                    display: flex; <br>
+                                    justify-content: space-between; <br>
+                                }             
+                            </code>
+                        </div>
+
+                        <br><br> 
+                        <div class="container row sb">
+                        <div class="item">Izq</div>
+                        <div class="item">Centro</div>
+                        <div class="item">Der</div>
+                        </div>
+                        </div>
+
+                        <div class="example-flexbox">
+                        <h5>Centra horizontalmente (justify-content: center)</h5>
+                        <p>Los elementos se centran horizontalmente dentro del contenedor.</p>
+                        <div class="note-code">
+                            <code>
+                                .container { <br>
+                                    display: flex; <br>
+                                    justify-content: center; <br>
+                                }
+                            </code>
+                        </div>
+
+                        <br><br>
+                        <div class="container row center">
+                        <div class="item">1</div>
+                        <div class="item">2</div>
+                        <div class="item">3</div>
+                        </div>
+                        </div>
+
+                        <div class="example-flexbox">
+                        <h5>Flex-wrap: los hijos bajan de línea</h5>
+                        <p>Los elementos se envuelven a la siguiente línea si no hay suficiente espacio.</p>
+                        <div class="note-code">
+                            <code>  
+                                .container { <br>
+                                    display: flex; <br>
+                                    flex-wrap: wrap; <br>
+                                }           
+                            </code>
+                        </div>
+
+                        <br><br>
+                        <div class="container row wrap">
+                        <div class="item">A</div>
+                        <div class="item">B</div>
+                        <div class="item">C</div>
+                        <div class="item">D</div>
+                        <div class="item">E</div>
+                        </div>
+                        </div>
+
+                        <div class="example-flexbox">
+                        <h5>Alineación vertical (align-items: center)</h5>
+                        <p>Los elementos se centran verticalmente dentro del contenedor.</p>
+                        <div class="note-code">
+                            <code>
+                                .container { <br>
+                                    display: flex; <br>
+                                    align-items: center; <br>
+                                }       
+                            </code>   
+                        </div>
+                        
+                        <br><br>
+                        <div class="container row align-center" style="height:90px;">
+                        <div class="item" style="height:40px;">Corto</div>
+                        <div class="item" style="height:80px;">Más alto</div>
+                        <div class="item" style="height:60px;">Medio</div>
+                        </div>
+                        </div>
+
+                        <div class="example-flexbox">
+                        <h5>Flex-grow (el del medio ocupa más)</h5>
+                        <p>El elemento con flex-grow crece para ocupar el espacio disponible.</p>
+                        <div class="note-code">
+                            <code>
+                                .row { flex-direction: row; } <br>
+                                .grow .item:nth-child(2) { flex-grow: 2; background: #49be25;}
+                            </code>    
+                        </div>
+                        
+                        <br><br>
+                        <div class="container row grow">
+                        <div class="item">1</div>
+                        <div class="item">Más grande</div>
+                        <div class="item">3</div>
+                        </div>
+                        </div>
+
+                    </div>    
                 </article>
                 <!-- Sub-sections de CSS3: uso de grid -->
                 <article id="grid-use">
@@ -220,26 +385,29 @@
                     </p>
                     <div>
                         <p>Ejemplo de código CSS Grid:</p>
-                        <code>
-                            .container { <br>
-                                display: grid; <br>
-                                grid-template-columns: repeat(3, 1fr); <br>
-                                gap: 10px; <br>
-                            } <br>
-                            .item { <br>
-                                background-color: lightblue; <br>
-                                padding: 20px; <br>
-                                text-align: center; <br>
-                            } <br>
-                        </code>
+                        <div class="note-code">
+                            <code>
+                                .container { <br>
+                                    display: grid; <br>
+                                    grid-template-columns: repeat(3, 1fr); <br>
+                                    gap: 10px; <br>
+                                } <br>
+                                .item { <br>
+                                    background-color: lightblue; <br>
+                                    padding: 20px; <br>
+                                    text-align: center; <br>
+                                } <br>
+                            </code>
+                        </div>
+                        
                     </div>
-                    <div class="container">
-                        <div class="item">Elemento 1</div>
-                        <div class="item">Elemento 2</div>
-                        <div class="item">Elemento 3</div>
-                        <div class="item">Elemento 4</div>
-                        <div class="item">Elemento 5</div>
-                        <div class="item">Elemento 6</div>
+                    <div class="container-grid">
+                        <div class="item-grid">Elemento 1</div>
+                        <div class="item-grid">Elemento 2</div>
+                        <div class="item-grid">Elemento 3</div>
+                        <div class="item-grid">Elemento 4</div>
+                        <div class="item-grid">Elemento 5</div>
+                        <div class="item-grid">Elemento 6</div>
                     </div>
                 </article>
                 <!-- Sub-sections de CSS3: uso de grid -->
