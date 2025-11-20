@@ -3,7 +3,56 @@
     padding: 0;
     box-sizing: border-box;     
 }
+a{
+    text-decoration: none;
+    color: inherit;
+}
+a:hover{
+    color: rgb(114, 43, 43);
+    text-decoration: underline;
+    font-weight: bolder;
+}
+.mainNavMenu{
+    background-color: lightgray;
+    padding: 10px;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: flex-end;
+
+}
+.mainNavMenu li{
+    margin: 3em;
+    list-style: none;
+}
+section{
+    margin: 2rem;
+}
+article{
+    margin: 2rem   ;
+}
+article ul{
+    margin-left: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+article ol{
+margin-left: 2rem;
+margin-top: 1rem;
+margin-bottom: 1rem;
+}
 /*estilos de flexbox*/
+ .container0 {  
+    display: flex;  
+    justify-content: space-around;  
+    align-items: center;  
+}  
+.item0 {  
+    background-color: lightcoral;  
+    padding: 20px;  
+    text-align: center;  
+}
+
+/*estilos de grid*/
 .container {
     display: grid; 
     grid-template-columns: repeat(3, 1fr);
