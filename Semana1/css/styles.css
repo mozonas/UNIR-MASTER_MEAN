@@ -5,6 +5,14 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 12px; 
 }
+
+footer{
+    background-color: lightgray;
+    text-align: center;
+    padding: 10px;
+    margin-top: 2rem;
+    height: 3rem;;
+}
 .note-code{
     background-color: beige;
     border: 1px solid rgb(39, 32, 32);
@@ -14,7 +22,7 @@
     font-family: 'Courier New', Courier, monospace;
     font-size: 1em;}
 
-    
+
 a{
     text-decoration: none;
     color: inherit;
@@ -65,6 +73,7 @@ code{
     align-items: center;  
 }  
 .item0 {  
+    border: 1px solid rgb(189, 100, 100);
     background-color: lightcoral;  
     padding: 20px;  
     text-align: center;  
@@ -83,6 +92,7 @@ code{
       gap: 10px;
     }
     .item {
+      border: 1px solid #3183a8;
       background: #3fa7d6;
       color: #fff;
       padding: 10px 0;
@@ -107,6 +117,7 @@ code{
     gap: 10px;
 }
 .item-grid { 
+    border: 1px solid #3183a8;
     background-color: lightblue; 
     padding: 20px; 
     text-align: center; 
