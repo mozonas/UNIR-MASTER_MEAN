@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <header><h1>Ejercicios de Javascript</h1></header>
+    <main>
+        <section class="exerciseSection">
+            <header class="headerSection">
+                <h2>Ejercicio 1</h2>
+                <p><button onclick="toggleShowOwnHiddenOtherExercises()">&#x2192</button></p>
+            </header>            
+            <article>
+                <h3>Descripción</h3>
+                <h4># Quiz</h4>
+                <p><button onclick="toggleShowOrHiddeDescription()">&#x2192</button></p>
+
+                <div class="descriptionContent">
+                    El quiz es un ejercicio académico en el que se va a pedir el nombre del usuario.<br>
+                    Después se le va a hacer 3 preguntas al usuario. Las tres preguntas son las que elija el usuario.<br><br>
+
+                    Las preguntas se van a realizar mediante prompt.<br>
+
+                    Todas las preguntas deben comenzar con el nombre introducido por el usuario. Por ejemplo:<br><br>
+
+                    ```
+                    "Luis, ¿Cuál es la capital de Italia?"
+                    ```
+                    <br>
+                    Al usuarion **solo se le hace la siguiente pregunta si acierta la anterior**
+                    <br>
+                    1. Pedir el nombre del usuario con un prompt<br>
+                    2. Hacer la primera pregunta. Si el usuario acierta entonces se hace la segunda pregunta.<br>
+                    3. Si el usuario no acierta, entonces hay que pintar en la web y no se hacen más preguntas<br><br>
+                        ````
+                        "Luis, tienes que estudiar más"
+                        ````
+                        <br>
+                    4. Si el usuario pasa a la segunda pregunta y acierta se le hace la tercera; si falla se escribe en la web, y no se hacen más preguntas <br><br>
+                        ```
+                        "Luis fallaste, ¡vuelve a intentarlo!"
+                        ```<br><br>
+                    5. Si el usuario pasa a la tercera pregunta y acierta, se escribe en la web <br>
+                        ```
+                        "Felicidades Luis, todas las respuestas son correctas".
+                        ```<br><br>
+
+
+                    <h4>## Mejoras</h4>
+
+                    1. Que el quiz empiece mediante un botón START<br>
+                    2. AVANZADO: Medir el tiempo que ha pasado desde que ha empezado. Buscar en internet cómo "medir tiempos en JS"<br>
+
+                </div>
+
+            
+
+                    
+            </article>
+            <article>
+                <h3>Solución</h3>
+                <p><button onclick="toggleShowOrHiddeSolution()">&#x2192</button></p>
+                <div class="solutionContent">
+                    <button onclick="startQuiz()">START QUIZ</button>
+                    <div class="chronometrer">
+                        <span id="minutes">00</span>:<span id="seconds">00</span>:<span id="milliseconds">000</span>        
+                    </div>
+
+                    <button onclick="endQuiz()">END QUIZ</button>
+                </div>>
+                
+            </article>
+        </section>
+    <script src="js/general_script.js"></script>
+</body>
+</html>
