@@ -135,3 +135,61 @@ function endQuiz() {
   elapsedTime = 0;
 }
 updateChronometer(); // inicializa a 00:00:000
+
+//lógica ejercicio 2
+
+function compareNumbers(){
+  const numeroA= parseFloat(document.getElementById("numeroA").value);
+  const numeroB= parseFloat(document.getElementById("numeroB").value);
+  let resultText="";  
+  if (isNaN(numeroA) || isNaN(numeroB)){
+    resultText="Por favor, ingrese números válidos en ambos campos.";
+  } 
+  else {
+    if (numeroA > numeroB){
+      resultText="El número "+ numeroA + " es mayor que "+ numeroB;
+    }
+    else if (numeroA < numeroB){
+      resultText="El número "+ numeroA + " es menor que "+ numeroB;
+    }
+    else {
+      resultText="Ambos números son iguales.";
+    } 
+  }
+  document.getElementById("resultCompareNumbers").innerText=resultText;
+}
+
+//logica ejercicio 3
+function checkEvenOdd(){
+  const numeroQ= parseInt(document.getElementById("numeroQ").value);
+  let resultEvenOddText="";
+  let resultMultipleOf3Text=""; 
+  const nodoResultadoresultadoE3=document.getElementById("resultEvenOdd");
+  nodoResultadoresultadoE3.classList.add('resultadoE3statusZero');
+  nodoResultadoresultadoE3.classList.remove('resultadoE3rojo','resultadoE3verde','resultadoE3azul','resultadoE3amarillo');
+
+  if (isNaN(numeroQ)){
+    resultEvenOddText="Por favor, ingrese un número válido.";
+    resultMultipleOf3Text="";
+    nodoResultadoresultadoE3.classList.add('resultadoE3rojo');
+  }
+  else {
+    if (numeroQ % 2 === 0){
+      resultEvenOddText="El número "+ numeroQ + " es par.";
+      nodoResultadoresultadoE3.classList.add('resultadoE3verde');
+    }
+    else {
+      resultEvenOddText="El número "+ numeroQ + " es impar.";
+      nodoResultadoresultadoE3.classList.add('resultadoE3azul');
+    }
+    if (numeroQ % 3 === 0){
+      resultMultipleOf3Text="Además, el número "+ numeroQ + " es múltiplo de 3.";
+      nodoResultadoresultadoE3.classList.add('resultadoE3amarillo');
+    }
+    else {
+      resultMultipleOf3Text="Además, el número "+ numeroQ + " no es múltiplo de 3.";
+    } 
+  }
+  document.getElementById("resultEvenOdd").innerText=resultEvenOddText;
+  document.getElementById("resultMultipleOf3").innerText=resultMultipleOf3Text;
+} 

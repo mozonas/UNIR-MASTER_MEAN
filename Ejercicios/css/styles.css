@@ -86,3 +86,74 @@ button:hover {
 .hiddeDescription {
     display: none;
 }
+
+/*estilos ejercicio 3*/
+#resultCompareNumbers, #resultEvenOdd, #resultMultipleOf3 {
+    margin-top: 15px;
+    font-weight: bold;
+}   
+input[type="number"] {
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 150px;
+}
+input[type="number"]:focus {
+    border-color: #2196F3;
+    outline: none;
+}   
+button {
+    background: #2196F3;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+button:hover {
+    background: #0b7dda;
+}   
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+button:disabled:hover {
+    background: #ccc;
+}
+button + button {
+    margin-left: 10px;
+}   
+button + input {
+    margin-left: 10px;
+}
+button + div {
+    margin-left: 10px;
+}
+
+/*
+- Añadir una clase 'verde' al contenedor cuando es PAR<br>
+- Añadir una clase 'azul' cuando el valor es IMPAR<br>
+- Añadir una clase 'amarillo' cuando es CERO<br>
+- Añadir un clase 'rojo' cuando no hay número introducido<br>
+*/
+.resultadoE3statusZero{
+    background-color: #ffffff;
+    border: 2px solid #ffffff;
+}
+.resultadoE3verde {
+    background-color: #d4edda;
+    border: 2px solid #28a745;
+}
+.resultadoE3azul {
+    background-color: #d1ecf1;
+    border: 2px solid #17a2b8;
+}
+.resultadoE3amarillo {
+    background-color: #fff3cd;
+    border: 2px solid #ffc107;
+}
+.resultadoE3rojo {
+    background-color: #f8d7da;
+    border: 2px solid #dc3545;
+}
