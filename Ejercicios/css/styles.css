@@ -157,3 +157,9 @@ button + div {
     background-color: #f8d7da;
     border: 2px solid #dc3545;
 }
+.esPrimo{
+    margin-top: 15px;
+    font-weight: bold;
+    background-color: #f8d7da;
+    border: 2px solid #7e045f;
+}   

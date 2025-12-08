@@ -192,4 +192,31 @@ function checkEvenOdd(){
   }
   document.getElementById("resultEvenOdd").innerText=resultEvenOddText;
   document.getElementById("resultMultipleOf3").innerText=resultMultipleOf3Text;
+  let esprimo=esPrimo(numeroQ);
+  if (esprimo){
+    const nodoPrimos=document.querySelector('.sonPrimos');
+    nodoPrimos.innerText="Números primos encontrados hasta ahora: " + primusNumberGlobal.join(", ");
+
+    document.querySelector('.esPrimo').innerText="El número "+ numeroQ + " es primo.";
+  }
 } 
+
+let primusNumberGlobal=[];
+
+function esPrimo(num) {
+  // esta lógica falla con el numero 3
+  if (num <= 1) return false;
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) return false;
+    else{
+      addSiNoExiste(primusNumberGlobal, num);
+      return true;
+    }
+  }
+}
+
+function addSiNoExiste(lista, n) {
+  if (!lista.includes(n)) {
+    lista.push(n);
+  }
+}
