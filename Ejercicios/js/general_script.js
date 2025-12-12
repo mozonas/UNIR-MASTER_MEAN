@@ -220,3 +220,24 @@ function addSiNoExiste(lista, n) {
     lista.push(n);
   }
 }
+
+//lógica ejercicio 4
+
+/**
+ * coger todos los números del 1 al 100 y pintar los impares en la página
+ */
+const OddNumbers=[];
+function OddNumbers2(InitNumber=0,Endnumber=100 ){
+  
+  for (i=InitNumber; i<= Endnumber; i++){
+    if (i%2!==0){
+        OddNumbers.push(i);
+    }
+  }
+
+}
+
+let innerHtmlOddNumbers='';
+function paintOddNumbers(){
+
+}
