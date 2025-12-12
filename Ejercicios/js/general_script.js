@@ -226,18 +226,35 @@ function addSiNoExiste(lista, n) {
 /**
  * coger todos los números del 1 al 100 y pintar los impares en la página
  */
-const OddNumbers=[];
-function OddNumbers2(InitNumber=0,Endnumber=100 ){
+
+function OddNumbers2(){
   
-  for (i=InitNumber; i<= Endnumber; i++){
-    if (i%2!==0){
-        OddNumbers.push(i);
-    }
+  let InitNumber= parseFloat(document.getElementById("initNumero").value);
+  if (Number.isNaN(InitNumber)){
+    InitNumber=0;
+  }
+  let Endnumber= parseFloat(document.getElementById("endNumero").value);
+  if (Number.isNaN(Endnumber)){
+    Endnumber=100;
   }
 
+  let OddNumbers4=[];
+  for (let i=InitNumber; i<= Endnumber; i++){
+    if (i%2!==0){
+        OddNumbers4.push(i);
+    }
+  }
+    paintOddNumbers(OddNumbers4);
 }
 
-let innerHtmlOddNumbers='';
-function paintOddNumbers(){
+  // empieza vacío
 
+function paintOddNumbers(OddNumbers4) {
+  const nodeOddNumbers =document.querySelector('#solutionOddNumbers')
+  let innerHtmlOddNumbers = "";    // opcional: limpiar antes
+
+  OddNumbers4.forEach((numero) => {
+    innerHtmlOddNumbers += `<div class="oddNum">${numero}</div>`;
+  });
+  nodeOddNumbers.innerHTML=innerHtmlOddNumbers;
 }

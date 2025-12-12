@@ -163,3 +163,24 @@ button + div {
     background-color: #f8d7da;
     border: 2px solid #7e045f;
 }   
+
+/*ej 4*/
+#solutionOddNumbers{
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.oddNum{
+    width: 5rem;
+    height: 5rem;
+    padding: 1rem;
+    font-size: 2rem;
+    align-content: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+    color: #fcfbfb;
+    background-color: #f05aca;
+    border:#7e045f 1px solid;
+    border-radius: 10px;
+}
