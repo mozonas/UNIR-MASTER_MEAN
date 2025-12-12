@@ -172,9 +172,9 @@ button + div {
     gap: 20px;
 }
 .oddNum{
-    width: 5rem;
+    width: fit-content;
     height: 5rem;
-    padding: 1rem;
+    padding: 2rem;
     font-size: 2rem;
     align-content: center;
     font-family: 'Courier New', Courier, monospace;
@@ -183,4 +183,30 @@ button + div {
     background-color: #f05aca;
     border:#7e045f 1px solid;
     border-radius: 10px;
+}
+
+/*ej 6*/
+#tablasMultiplicar{
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.tableUnique{
+    width: fit-content;
+    padding: 2rem;
+    font-size: 2rem;
+    align-content: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 700;
+    color: #161515;
+    background-color: #faf9fa;
+    border:#080808 1px solid;
+    border-radius: 10px;
+}
+
+.tableUnique ul li{
+    margin-left: 5rem;
+    list-style:none ;
 }

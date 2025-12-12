@@ -258,3 +258,23 @@ function paintOddNumbers(OddNumbers4) {
   });
   nodeOddNumbers.innerHTML=innerHtmlOddNumbers;
 }
+
+
+// lógica ejercicio 6
+
+function TablasDeMultiplicar(){
+  let innerHtmlTable='';
+  const numbers =[0,1,2,3,4,5,6,7,8,9,10];
+  let nodoTablas= document.querySelector('#tablasMultiplicar');
+  numbers.forEach((numero) =>{
+    innerHtmlTable+=`<div class="tableUnique">
+                        <h4>Tabla de Multiplicar del ${numero}</h4>
+                        <ul class="tablaNMultiplicar">`;
+    numbers.forEach((numero2) =>{
+      let resultado = numero*numero2;
+    innerHtmlTable+=`<li> ${numero} x ${numero2} = ${resultado}</li>`
+    });
+    innerHtmlTable+='</ul></div>'
+     nodoTablas.innerHTML= innerHtmlTable;             
+  });
+}
