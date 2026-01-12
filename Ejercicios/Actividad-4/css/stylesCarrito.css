@@ -5,3 +5,21 @@
     font-family: sans-serif;
 }
 
+.productsMain {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+/* productos ocupa más ancho que el resumen */
+.products {
+  flex: 3;
+}
+
+.productsSummary {
+  flex: 1;
+}
+
+
+
+
