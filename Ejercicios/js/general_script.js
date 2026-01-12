@@ -1,9 +1,43 @@
 'use strict'
 const userName='';
+let toggleShowOwnHiddenOtherExercisesBool= false
 
-function toggleShowOwnHiddenOtherExercises(){
-    alert ('Nothing now');
+function toggleShowOwnHiddenOtherExercises(event){
+
+    //.classList.add( 'rotando' )
+  if (toggleShowOwnHiddenOtherExercisesBool=== false){
+    ShowDescription(event);
+  }
+  else {
+    HideDescriptions(event);
+  }
+
 }
+function ShowDescription(event){
+  toggleShowOwnHiddenOtherExercisesBool= true;
+    const boton = event.target;
+    boton.innerHTML='&#x2193;'
+  const padre = boton.parentElement;
+  const abuelo=padre.parentElement;
+  console.log(abuelo);
+  const articulos = abuelo.querySelectorAll("article");
+  articulos.forEach(art => {
+    art.classList.remove('hiddeDescription');
+  });
+}
+function HideDescriptions(event){
+  toggleShowOwnHiddenOtherExercisesBool= false;
+  const boton = event.target;
+  boton.innerHTML='&#x2192';
+  const padre = boton.parentElement;
+  const abuelo=padre.parentElement;
+  console.log(abuelo);
+  const articulos = abuelo.querySelectorAll("article");
+  articulos.forEach(art => {
+    art.classList.add('hiddeDescription');
+  });
+}
+
 
 function toggleShowOrHiddeSolution(){
 alert ('Nothing now');
@@ -29,11 +63,67 @@ function updateChronometer() {
   document.getElementById("milliseconds").textContent =
     String(milliseconds).padStart(3, "0");
 }
-
-function startQuiz() {
+function Init(){
+  setChrono();
+  startQuiz();
+}
+function setChrono(){
   if (timerId !== null) return;        // ya está corriendo
   startTime = Date.now();
   timerId = setInterval(updateChronometer, 10); // actualiza cada 10 ms
+}
+
+function startQuiz() {
+
+  const userName=prompt("Por favor, ingrese su nombre:");
+  let counter=0;
+  let responses=['Madrid','Londres','Paris'];
+  let status=false;
+
+
+  let response1=prompt(userName+" ¿Capital de España?");
+  const quizStatus = document.querySelector("article > .solutionContent > .quizStatus");
+  const counterDiv = document.querySelector("article > .solutionContent > .counter"); 
+  debugger;
+  quizStatus.innerHTML=""; // limpiamos
+  counterDiv.innerHTML= counter ;
+  if (response1.toLowerCase()===responses[0].toLowerCase()){
+    counter++;
+    status= true;
+    counterDiv.innerHTML= counter ;
+    quizStatus.innerHTML=userName+",Felicidades! Has respondido correctamente a la primera pregunta.";
+  } 
+  else {
+    quizStatus.innerHTML=userName+" tienes que estudiar más. La respuesta correcta es "+ responses[0];
+  }
+  if (status===true){
+    status=false; // reiniciamos para la siguiente pregunta
+    let response2=prompt(userName+" ¿Capital de Reino Unido?"); 
+    if (response2.toLowerCase()===responses[1].toLowerCase()){
+      counter++;
+      status= true;
+      counterDiv.innerHTML= counter ;
+      quizStatus.innerHTML=userName+",Felicidades! Has respondido correctamente a la segunda pregunta.";
+    } 
+    else {
+      quizStatus.innerHTML=userName+" tienes que estudiar más. La respuesta correcta es "+ responses[1];
+    }
+  }
+  if (status===true){
+    status=false; // reiniciamos para la siguiente pregunta
+    let response3=prompt(userName +" ¿Capital de Francia?");   
+    if (response3.toLowerCase()===responses[2].toLowerCase()){
+      counter++;
+      counterDiv.innerHTML= counter ;
+      quizStatus.innerHTML="Felicidades "+ userName +",todas las respuestas son correctas";
+      //endQuiz();
+    }
+    else {
+      quizStatus.innerHTML=userName+" tienes que estudiar más. La respuesta correcta es "+ responses[2];
+    }
+      
+
+  }
 }
 
 function endQuiz() {
@@ -45,3 +135,146 @@ function endQuiz() {
   elapsedTime = 0;
 }
 updateChronometer(); // inicializa a 00:00:000
+
+//lógica ejercicio 2
+
+function compareNumbers(){
+  const numeroA= parseFloat(document.getElementById("numeroA").value);
+  const numeroB= parseFloat(document.getElementById("numeroB").value);
+  let resultText="";  
+  if (isNaN(numeroA) || isNaN(numeroB)){
+    resultText="Por favor, ingrese números válidos en ambos campos.";
+  } 
+  else {
+    if (numeroA > numeroB){
+      resultText="El número "+ numeroA + " es mayor que "+ numeroB;
+    }
+    else if (numeroA < numeroB){
+      resultText="El número "+ numeroA + " es menor que "+ numeroB;
+    }
+    else {
+      resultText="Ambos números son iguales.";
+    } 
+  }
+  document.getElementById("resultCompareNumbers").innerText=resultText;
+}
+
+//logica ejercicio 3
+function checkEvenOdd(){
+  const numeroQ= parseInt(document.getElementById("numeroQ").value);
+  let resultEvenOddText="";
+  let resultMultipleOf3Text=""; 
+  const nodoResultadoresultadoE3=document.getElementById("resultEvenOdd");
+  nodoResultadoresultadoE3.classList.add('resultadoE3statusZero');
+  nodoResultadoresultadoE3.classList.remove('resultadoE3rojo','resultadoE3verde','resultadoE3azul','resultadoE3amarillo');
+
+  if (isNaN(numeroQ)){
+    resultEvenOddText="Por favor, ingrese un número válido.";
+    resultMultipleOf3Text="";
+    nodoResultadoresultadoE3.classList.add('resultadoE3rojo');
+  }
+  else {
+    if (numeroQ % 2 === 0){
+      resultEvenOddText="El número "+ numeroQ + " es par.";
+      nodoResultadoresultadoE3.classList.add('resultadoE3verde');
+    }
+    else {
+      resultEvenOddText="El número "+ numeroQ + " es impar.";
+      nodoResultadoresultadoE3.classList.add('resultadoE3azul');
+    }
+    if (numeroQ % 3 === 0){
+      resultMultipleOf3Text="Además, el número "+ numeroQ + " es múltiplo de 3.";
+      nodoResultadoresultadoE3.classList.add('resultadoE3amarillo');
+    }
+    else {
+      resultMultipleOf3Text="Además, el número "+ numeroQ + " no es múltiplo de 3.";
+    } 
+  }
+  document.getElementById("resultEvenOdd").innerText=resultEvenOddText;
+  document.getElementById("resultMultipleOf3").innerText=resultMultipleOf3Text;
+  let esprimo=esPrimo(numeroQ);
+  if (esprimo){
+    const nodoPrimos=document.querySelector('.sonPrimos');
+    nodoPrimos.innerText="Números primos encontrados hasta ahora: " + primusNumberGlobal.join(", ");
+
+    document.querySelector('.esPrimo').innerText="El número "+ numeroQ + " es primo.";
+  }
+} 
+
+let primusNumberGlobal=[];
+
+function esPrimo(num) {
+  // esta lógica falla con el numero 3
+  if (num <= 1) return false;
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) return false;
+    else{
+      addSiNoExiste(primusNumberGlobal, num);
+      return true;
+    }
+  }
+}
+
+function addSiNoExiste(lista, n) {
+  if (!lista.includes(n)) {
+    lista.push(n);
+  }
+}
+
+//lógica ejercicio 4
+
+/**
+ * coger todos los números del 1 al 100 y pintar los impares en la página
+ */
+
+function OddNumbers2(){
+  
+  let InitNumber= parseFloat(document.getElementById("initNumero").value);
+  if (Number.isNaN(InitNumber)){
+    InitNumber=0;
+  }
+  let Endnumber= parseFloat(document.getElementById("endNumero").value);
+  if (Number.isNaN(Endnumber)){
+    Endnumber=100;
+  }
+
+  let OddNumbers4=[];
+  for (let i=InitNumber; i<= Endnumber; i++){
+    if (i%2!==0){
+        OddNumbers4.push(i);
+    }
+  }
+    paintOddNumbers(OddNumbers4);
+}
+
+  // empieza vacío
+
+function paintOddNumbers(OddNumbers4) {
+  const nodeOddNumbers =document.querySelector('#solutionOddNumbers')
+  let innerHtmlOddNumbers = "";    // opcional: limpiar antes
+
+  OddNumbers4.forEach((numero) => {
+    innerHtmlOddNumbers += `<div class="oddNum">${numero}</div>`;
+  });
+  nodeOddNumbers.innerHTML=innerHtmlOddNumbers;
+}
+
+
+// lógica ejercicio 6
+
+function TablasDeMultiplicar(){
+  let innerHtmlTable='';
+  const numbers =[0,1,2,3,4,5,6,7,8,9,10];
+  let nodoTablas= document.querySelector('#tablasMultiplicar');
+  numbers.forEach((numero) =>{
+    innerHtmlTable+=`<div class="tableUnique">
+                        <h4>Tabla de Multiplicar del ${numero}</h4>
+                        <ul class="tablaNMultiplicar">`;
+    numbers.forEach((numero2) =>{
+      let resultado = numero*numero2;
+    innerHtmlTable+=`<li> ${numero} x ${numero2} = ${resultado}</li>`
+    });
+    innerHtmlTable+='</ul></div>'
+     nodoTablas.innerHTML= innerHtmlTable;             
+  });
+}

@@ -7,17 +7,19 @@
     <title>Document</title>
 </head>
 <body>
-    <header><h1>Ejercicios de Javascript</h1></header>
+    <header>
+        <button onclick="window.location.href='index.html'">&#x2190</button>
+        <h1>Ejercicios de Javascript</h1>
+    </header>
     <main>
         <section class="exerciseSection">
             <header class="headerSection">
                 <h2>Ejercicio 1</h2>
-                <p><button onclick="toggleShowOwnHiddenOtherExercises()">&#x2192</button></p>
+                <button onclick="toggleShowOwnHiddenOtherExercises(event)">&#x2192</button>
             </header>            
-            <article>
+            <article class="description hiddeDescription">
                 <h3>Descripción</h3>
                 <h4># Quiz</h4>
-                <p><button onclick="toggleShowOrHiddeDescription()">&#x2192</button></p>
 
                 <div class="descriptionContent">
                     El quiz es un ejercicio académico en el que se va a pedir el nombre del usuario.<br>
@@ -61,18 +63,131 @@
 
                     
             </article>
-            <article>
+            <article class="quiz hiddeDescription">
                 <h3>Solución</h3>
-                <p><button onclick="toggleShowOrHiddeSolution()">&#x2192</button></p>
+                
                 <div class="solutionContent">
-                    <button onclick="startQuiz()">START QUIZ</button>
+                    <button onclick="Init()">START QUIZ</button>
+                    
                     <div class="chronometrer">
                         <span id="minutes">00</span>:<span id="seconds">00</span>:<span id="milliseconds">000</span>        
                     </div>
-
+                    <div class="counter">0</div>    
+                    
+                    <div class="quizStatus"></div>
                     <button onclick="endQuiz()">END QUIZ</button>
-                </div>>
-                
+                </div>
+               
+            </article>
+        </section>
+
+        <section class="exerciseSection">
+            <header class="headerSection">
+                <h2>Ejercicio 2</h2>
+                <button onclick="toggleShowOwnHiddenOtherExercises(event)">&#x2192</button>
+            </header>            
+            <article class="description hiddeDescription">
+                <h3>Descripción</h3>
+                <div>
+                     <h4># ¿Qué número es mayor?</h4>
+
+                    Introducir con dos prompts dso números.<br>
+                    Número 1 y número 2<br>
+
+                    Si el número 1 es MAYOR que el número 2 escribir en un DIV del HTML<br>
+
+                    ```
+                    El número 1 (6) es MAYOR que el número 2 (3)
+                    ```<br><br>
+
+                    Si el número 1 es MENOR que el número 2 escribir en un DIV del HTML<br>
+
+                    ```
+                    El número 1 (6) es MENOR que el número 2 (10)
+                    ```<br><br>
+
+                    Si el número 1 es igual al número 2<br>
+
+                    ```
+                    El número 1 (6) es igual al número 2 (6) 
+                    ```<br><br>
+
+                    ## Mejoras<br>
+
+                    Sustituir los prompts por dos inputs y añadir un botón de Calcular
+                </div>
+            </article>
+            <article class="hiddeDescription">
+                <input type="number" name="numeroA" id="numeroA" placeholder="Número 1">
+                <input type="number" name="numeroB" id="numeroB" placeholder="Número 2">
+                <button onclick="compareNumbers()">Calcular</button>
+                <div id="resultCompareNumbers"></div>
+            </article>
+        </section>
+
+        <section class="exerciseSection">
+            <header class="headerSection">
+                <h2>Ejercicio 3</h2>
+                <button onclick="toggleShowOwnHiddenOtherExercises(event)">&#x2192</button>
+            </header>            
+            <article class="description hiddeDescription">
+                <h3>Descripción</h3>
+                <div>
+                    <h4># Número impar</h4>
+
+                    Introducir un input de tipo number con un botón<br>
+
+                    Cunado se clicke en el botón calcular si el número es PAR o IMPAR y escribirlo en un contenedor de la web.<br>
+
+                    Si el número es PAR<br>
+                    ````
+                    El 4 es PAR
+                    ````<br><br>
+
+                    ````
+                    El 3 es IMPAR
+                    ````<br><br>
+
+                    Si es cero<br>
+
+                    ````
+                    ¡¡ES CERO!
+                    ````<br><br>
+
+                    Si no hay dato en el input<br>
+
+                    ```
+                    No hay número introducido
+                    ```<br><br>
+
+                    ## Mejoras<br>
+
+                    1. Añadir clases<br>
+
+                    Añadir una clase 'verde' al contenedor cuando es PAR<br>
+
+                    Añadir una clase 'azul' cuando el valor es IMPAR<br>
+
+                    Añadir una clase 'amarillo' cuando es CERO<br>
+
+                    Añadir un clase 'rojo' cuando no hay número introducido<br>
+
+                    2. Añadir otro contenedor para decir además si es múltiprlo de 3<br>
+
+                    ````
+                    El número 12 es PAR y múltiplo de 3<br>
+
+                    El número 11 es impar y no es múltiplo de 3<br>
+
+                </div>
+            </article>
+            <article class="hiddeDescription">
+                <input type="number" name="numeroQ" id="numeroQ" placeholder="Introduce un número" >
+                <button onclick="checkEvenOdd()">Calcular</button>
+                <div id="resultEvenOdd" class="resultadoE3statusZero"></div>  
+                <div id="resultMultipleOf3"></div>
+                <div class="esPrimo"></div>
+                <div class="sonPrimos"></div>
             </article>
         </section>
     <script src="js/general_script.js"></script>

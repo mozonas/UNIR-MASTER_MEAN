@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <button onclick="window.location.href='index.html'">&#x2190</button>
+        <h1>Ejercicios de Javascript</h1>
+    </header>
+    <main>
+        <section class="exerciseSection">
+            <header class="headerSection">
+                <h2>Ejercicio 4</h2>
+                <button onclick="toggleShowOwnHiddenOtherExercises(event)">&#x2192</button>
+            </header>            
+            <article class="description hiddeDescription">
+                <h3>Descripción</h3>
+                <h4>#Números Impares</h4>
+
+                <div class="descriptionContent">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, praesentium cumque sequi consequuntur vero possimus ex ducimus ea adipisci sapiente, nobis earum aspernatur esse nulla natus temporibus quis recusandae ipsam.
+
+                </div>
+
+            
+
+                    
+            </article>
+            <article class="hiddeDescription">
+                <h3>Solución</h3>
+                
+                <div class="solutionContent">
+                    <button onclick="OddNumbers2()">Sin Rango Start</button>
+                    <input type="number" name="initNumero" id="initNumero" placeholder="initNumero" >
+                    <input type="number" name="endNumero" id="endNumero" placeholder="endNumero" >
+                     <button onclick="OddNumbers2()">Start</button>
+                    <div id="solutionOddNumbers">
+
+                    </div>
+                </div>
+               
+            </article>
+        </section>
+
+        <section class="exerciseSection">
+            <header class="headerSection">
+                <h2>Ejercicio 5</h2>
+                <button onclick="toggleShowOwnHiddenOtherExercises(event)">&#x2192</button>
+            </header>            
+            <article class="description hiddeDescription">
+                <h3>Descripción</h3>
+                <div>
+                     <h4># Título</h4>
+
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Non dicta eos repellat repellendus maxime laudantium dignissimos adipisci a! Accusamus vero unde libero voluptate, veniam dignissimos debitis delectus corporis quos maxime.
+                </div>
+            </article>
+            <article class="hiddeDescription">
+               <h3>Solución</h3>
+                
+                
+            </article>
+        </section>
+
+        <section class="exerciseSection">
+            <header class="headerSection">
+                <h2>Ejercicio 6</h2>
+                <button onclick="toggleShowOwnHiddenOtherExercises(event)">&#x2192</button>
+            </header>            
+            <article class="description hiddeDescription">
+                <h3>Descripción</h3>
+                <div>
+                    <h4># Tablas de multiplicar</h4>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum nostrum aspernatur laborum earum dicta corrupti quaerat officiis ipsam doloribus. Doloribus nostrum quidem fuga dolorum beatae quae totam sed libero fugit?
+                </div>
+            </article>
+            <article class="hiddeDescription">
+                <h3>Solución</h3>
+                
+                <div class="solutionContent">
+                    <button onclick="TablasDeMultiplicar()">Show me!</button>
+                    <div id="tablasMultiplicar">
+
+                    </div>
+                </div>
+            </article>
+        </section>
+    <script src="js/general_script.js"></script>
+</body>
+</html>
