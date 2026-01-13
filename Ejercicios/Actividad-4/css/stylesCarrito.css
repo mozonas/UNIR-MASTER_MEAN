@@ -18,16 +18,17 @@
 .cardItemHeader{
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: left;
     padding: 1rem;
     border-bottom: 2px solid #444343;
-    background-color: #fcfcfc;
+    background-color: #302f2f;
+    color:white;
     font-weight: bold;
 }
 .cartItem {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: left;
   padding: 1rem;
   border-bottom: 1px solid #444343;
   background-color: #ccc;
@@ -35,7 +36,32 @@
 .cartItem:nth-child(odd) {
     background-color: #ffffff; 
 }
+/*reorg*/
+.cardItemHeader,
+.cartItem {
+  display: grid;
+  grid-template-columns: 3fr 2fr 2fr 2fr; /* Producto / Cantidad / Unidad / Total */
+  column-gap: 1rem;
+  align-items: center;
+}
 
+.cartItemQty,
+.cartItemQtyHeader,
+.cartItemUnitPrice,
+.cartItemTotal {
+  text-align: center;
+}
+.cartItemQty {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+}
+.cartItemCount {
+  min-width: 3rem;
+  text-align: center;
+}
+/**/
 .cartItemBtn {
     border: none;
     padding: 0.5rem 1rem;
