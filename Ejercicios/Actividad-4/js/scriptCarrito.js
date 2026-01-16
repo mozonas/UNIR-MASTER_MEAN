@@ -1,4 +1,6 @@
 'useStrict';
+import Carrito from './Carrito.js';
+const instanciaCarrito = new Carrito();
 console.log('Script de carrito cargado correctamente');
 const responseAPI= 
 {
@@ -45,7 +47,8 @@ const responseAPI=
 
   const currency = responseAPI.currency;
   const products = responseAPI.products;
-
+  instanciaCarrito.setCurrency(currency);
+  
   function findSKU(SKU) {
     return products.find(product => product.SKU === SKU);
   }
