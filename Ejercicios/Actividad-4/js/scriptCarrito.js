@@ -48,10 +48,13 @@ const responseAPI=
   const currency = responseAPI.currency;
   const products = responseAPI.products;
   instanciaCarrito.setCurrency(currency);
-  
+
+  // creamos esta funicón por si necesitamosbuscar información en la respuesta de la api, en el listado de productos, mediante el sku (id)
+
   function findSKU(SKU) {
     return products.find(product => product.SKU === SKU);
   }
+  // creamos esta función para el pintado del 'grid'? 'listado de productos', según lo obtenido de la llamada API
 
   function renderCartItems(products, containerSelector) {
   const container = document.querySelector(containerSelector);
@@ -83,5 +86,12 @@ const responseAPI=
   });
 }
 
-// uso
+// renderizamos el listado de productos
+
 renderCartItems(products, '.productsList');
+
+
+// implementamos la lógica de los botones
+
+
+// implementamos la lógica del renderizado de producto
