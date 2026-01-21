@@ -252,7 +252,15 @@ function attachCartButtonHandlers(container, instanciaCarrito) {
 const container = document.querySelector('.productsList');
 attachCartButtonHandlers(container, instanciaCarrito);
 // implementamos la lógica del renderizado de carrito
+
+/**
+ * 
+ * @param {*} instanciaCarrito 
+ * @returns 
+ */
+
 function pintarCarrito(instanciaCarrito) {
+  
     const summaryList = document.querySelector('.summaryList');
     const summaryTotalValue = document.querySelector('.summaryTotalValue');
     
@@ -262,13 +270,14 @@ function pintarCarrito(instanciaCarrito) {
     // VALIDAR que productos existe y es array
     if (!instanciaCarrito.productos || !Array.isArray(instanciaCarrito.productos)) {
         console.log('No hay productos:', instanciaCarrito.productos);
-        summaryTotalValue.textContent = '0.00€';
+        summaryTotalValue.textContent = '0.00'+' '+instanciaCarrito.currency;
+        
         return;
     }
     
     instanciaCarrito.productos.forEach(producto => {
         // VALIDAR que producto tiene nombre y precio
-        if (!producto || !producto.nombre || typeof producto.precio !== 'number') {
+        if (!producto || !producto.title || typeof producto.price !== 'number') {
             console.log('Producto inválido:', producto);
             return; // Salta este producto
         }
@@ -278,19 +287,19 @@ function pintarCarrito(instanciaCarrito) {
         
         const spanLabel = document.createElement('span');
         spanLabel.className = 'summaryLabel';
-        spanLabel.textContent = producto.nombre;
+        spanLabel.textContent = producto.title;
         
         const spanValue = document.createElement('span');
         spanValue.className = 'summaryValue';
-        spanValue.textContent = `${producto.precio.toFixed(2)}€`;
+        spanValue.textContent = `${producto.price.toFixed(2)}€`;
         
         li.appendChild(spanLabel);
         li.appendChild(spanValue);
         summaryList.appendChild(li);
-        total += producto.precio;
+        total = instanciaCarrito.getTotal();
     });
-    
-    summaryTotalValue.textContent = `${total.toFixed(2)}€`;
+    total = instanciaCarrito.getTotal();
+    summaryTotalValue.innerHTML = total +' ' +instanciaCarrito.currency;
 }
 
 

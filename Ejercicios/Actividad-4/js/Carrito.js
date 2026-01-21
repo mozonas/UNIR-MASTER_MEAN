@@ -21,10 +21,10 @@ class Carrito {
         const existingIndex = this.productos.findIndex(p => p.SKU === producto.SKU);
         
         if (existingIndex !== -1) {
-            // ✅ UPDATE: Actualizar cantidad si existe
+
             this.productos[existingIndex].qty = producto.qty;
         } else {
-            // ✅ CREATE: Nuevo producto usando DATOS DEL BOTÓN
+
             this.productos.push({
                 SKU: producto.SKU,
                 title: producto.title,
@@ -47,7 +47,6 @@ class Carrito {
      */
     getTotal() {
         return this.productos.reduce((total, product) => {
-            // ✅ Formatear ANTES de sumar
             const price = parseFloat(product.price).toFixed(2);
             const itemTotal = parseFloat(price) * product.qty;
             return total + itemTotal;
