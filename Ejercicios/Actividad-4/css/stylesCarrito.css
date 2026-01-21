@@ -5,6 +5,12 @@
     font-family: sans-serif;
 }
 
+.productsHeader{
+
+  padding-left :1rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
 .productsMain {
   display: flex;
   gap: 2rem;
