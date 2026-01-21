@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet" href="css/stylesCarrito.css">
+</head>
+<body>
+    <header class="productsHeader">
+        <button class="pageLogo">agoodshop</h1>
+        <h1 class="pagetitle">agoodshop</h1>
+        <nav class="productsNavigation">
+            <a href="index.html" class="NavigationLink">Volver a tienda</a>
+        </nav>
+    </header>
+
+    <main class="productsMain">
+        <section class="products" aria-label="Listado de productos">
+            <!-- esto es la cabecera del listado -->
+            <article class="cardItemHeader">
+                <div class="cartItemInfoHeader">
+                <h3 class="cartItemTitleHeader">Producto</h3>
+                </div>
+
+                <div class="cartItemQtyHeader">
+                <h3 class="cartItemTitleHeader">Cantidad</h3>
+                </div>
+
+                <div class="cartItemUnitPrice">
+                    <h3 class="cartItemTitleHeader">Unidad</h3>
+                </div>
+                <div class="cartItemTotal">
+                    <h3 class="cartItemTitleHeader">Total</h3>
+                </div>
+            </article>
+        
+            <div class="productsList">
+                <!-- aquí se renderizan N productos con JS -->
+            </div>
+
+            
+        </section>
+
+        <aside class="productsSummary" aria-label="Resumen de compra">
+        <!-- tarjeta de resumen -->
+            <h2 class="summaryTitle">Total</h2>
+
+            <ul class="summaryList">
+            <li class="summaryRow">
+                <span class="summaryLabel">iPhone 13 Pro</span>
+                <span class="summaryValue">2816,97€</span>
+            </li>
+            <li class="summaryRow">
+                <span class="summaryLabel">Funda de piel</span>
+                <span class="summaryValue">159,98€</span>
+            </li>
+            </ul>
+
+            <div class="summaryFooter">
+                <span class="summaryTotalLabel">TOTAL</span>
+                <span class="summaryTotalValue">5820€</span>
+            </div>
+        </aside>
+    </main>
+    <!-- script js -->
+    <script src="js/general.js" type="module"></script>
+</body>
+</html>
