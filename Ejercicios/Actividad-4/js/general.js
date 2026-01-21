@@ -143,6 +143,7 @@ function renderCartItems(products, containerSelector) {
     // Data attributes en botones
     btnPlus.dataset.sku = product.SKU;
     btnPlus.dataset.price = product.price;
+    btnPlus.dataset.subTotal = '0';
     btnPlus.dataset.title = product.title;
     btnPlus.dataset.qty = '0';
     
@@ -221,6 +222,7 @@ function attachCartButtonHandlers(container, instanciaCarrito) {
     // Sincronizar data-qty en AMBOS botones del mismo artículo
     const bothButtons = article.querySelectorAll('.cartItemBtn');
     bothButtons.forEach(b => b.dataset.qty = newQty);
+    bothButtons.forEach(b => b.dataset.subTotal = newQty*price);
     
     // ✅ NUEVA LÓGICA: Deshabilitar botón minus cuando qty=0
     const btnMinus = article.querySelector('.cartItemBtnMinus');
@@ -235,11 +237,27 @@ function attachCartButtonHandlers(container, instanciaCarrito) {
     // Actualizar total
     total.textContent = `${(newQty * price).toFixed(2)} €`;
     
-    // Actualizar Carrito
-    const producto = { SKU, title, price, qty: newQty };
-    if (instanciaCarrito && typeof instanciaCarrito.addProductos === 'function') {
-      instanciaCarrito.addProductos(producto);
+    // Actualizar Carrito (SIEMPRE actualiza o elimina)
+    let subtotal= price*newQty;
+    const producto = { 
+    SKU, 
+    title, 
+    price,
+    subTotal : subtotal,  // ← subtotal
+    qty: newQty 
+};
+    if (newQty > 0) {
+      // Actualizar/Añadir con nueva cantidad
+      if (instanciaCarrito && typeof instanciaCarrito.addProductos === 'function') {
+        instanciaCarrito.addProductos(producto);
+      }
+    } else {
+      // qty = 0 → ELIMINAR producto
+      if (instanciaCarrito && typeof instanciaCarrito.removeProductos === 'function') {
+        instanciaCarrito.removeProductos(SKU);
+      }
     }
+
 
     console.log (instanciaCarrito);
     console.log (instanciaCarrito.getTotal());
@@ -252,6 +270,13 @@ function attachCartButtonHandlers(container, instanciaCarrito) {
 const container = document.querySelector('.productsList');
 attachCartButtonHandlers(container, instanciaCarrito);
 // implementamos la lógica del renderizado de carrito
+
+/**
+ * 
+ * @param {*} instanciaCarrito 
+ * @returns 
+ */
+
 function pintarCarrito(instanciaCarrito) {
     const summaryList = document.querySelector('.summaryList');
     const summaryTotalValue = document.querySelector('.summaryTotalValue');
@@ -259,18 +284,16 @@ function pintarCarrito(instanciaCarrito) {
     summaryList.innerHTML = '';
     let total = 0;
     
-    // VALIDAR que productos existe y es array
     if (!instanciaCarrito.productos || !Array.isArray(instanciaCarrito.productos)) {
-        console.log('No hay productos:', instanciaCarrito.productos);
-        summaryTotalValue.textContent = '0.00€';
+        summaryTotalValue.textContent = `0.00 ${instanciaCarrito.currency}`;
         return;
     }
     
     instanciaCarrito.productos.forEach(producto => {
-        // VALIDAR que producto tiene nombre y precio
-        if (!producto || !producto.nombre || typeof producto.precio !== 'number') {
+        // VALIDAR subTotal (precio * qty)
+        if (!producto || !producto.title || typeof producto.subTotal !== 'number') {
             console.log('Producto inválido:', producto);
-            return; // Salta este producto
+            return;
         }
         
         const li = document.createElement('li');
@@ -278,19 +301,20 @@ function pintarCarrito(instanciaCarrito) {
         
         const spanLabel = document.createElement('span');
         spanLabel.className = 'summaryLabel';
-        spanLabel.textContent = producto.nombre;
+        spanLabel.textContent = producto.title;
         
         const spanValue = document.createElement('span');
         spanValue.className = 'summaryValue';
-        spanValue.textContent = `${producto.precio.toFixed(2)}€`;
+        spanValue.textContent = `${producto.subTotal.toFixed(2)}€`;
         
         li.appendChild(spanLabel);
         li.appendChild(spanValue);
         summaryList.appendChild(li);
-        total += producto.precio;
+        
+        total += producto.subTotal;  // ← SUMAR subTotal, NO getTotal()
     });
     
-    summaryTotalValue.textContent = `${total.toFixed(2)}€`;
+    summaryTotalValue.textContent = `${total.toFixed(2)} ${instanciaCarrito.currency}`;
 }
 
 

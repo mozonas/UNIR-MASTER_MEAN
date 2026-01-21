@@ -21,17 +21,28 @@ class Carrito {
         const existingIndex = this.productos.findIndex(p => p.SKU === producto.SKU);
         
         if (existingIndex !== -1) {
-            // ✅ UPDATE: Actualizar cantidad si existe
+
             this.productos[existingIndex].qty = producto.qty;
+            this.productos[existingIndex].subTotal = producto.subTotal;
         } else {
-            // ✅ CREATE: Nuevo producto usando DATOS DEL BOTÓN
+
             this.productos.push({
                 SKU: producto.SKU,
                 title: producto.title,
                 price: parseFloat(producto.price),
+                subTotal: parseFloat(producto.subTotal),
                 qty: producto.qty
             });
 
+        }
+    }
+    removeProductos(SKU) {
+        // Buscar índice del producto por SKU
+        const index = this.productos.findIndex(producto => producto.SKU === SKU);
+        
+        if (index !== -1) {
+            // Eliminar producto del array
+            this.productos.splice(index, 1);
         }
     }
     /**
@@ -47,9 +58,8 @@ class Carrito {
      */
     getTotal() {
         return this.productos.reduce((total, product) => {
-            // ✅ Formatear ANTES de sumar
             const price = parseFloat(product.price).toFixed(2);
-            const itemTotal = parseFloat(price) * product.qty;
+            const itemTotal = parseFloat(product.subTotal);
             return total + itemTotal;
         }, 0).toFixed(2);
     }
