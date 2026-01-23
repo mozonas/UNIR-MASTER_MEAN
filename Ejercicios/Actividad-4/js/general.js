@@ -3,66 +3,17 @@ import Carrito from './Carrito.js';
 const instanciaCarrito = new Carrito();
 console.log(instanciaCarrito);
 console.log('Script de carrito cargado correctamente');
-/*
-const responseAPI= 
-{
-    "currency": "€",
-    "products": [
-      {
-        "SKU": "0K3QOSOV4V",
-        "title": "iFhone 13 Pro",
-        "price": "938.99"
-      },
-      {
-        "SKU": "TGD5XORY1L",
-        "title": "Cargador",
-        "price": "49.99"
-      },
-      {
-        "SKU": "IOKW9BQ9F3",
-        "title": "Funda de piel",
-        "price": "79.99"
-      },
-      {
-        "SKU": "IOKW9BQ9F4",
-        "title": "Funda de piel roja",
-        "price": "79.99"
-      },
-      {
-        "SKU": "IOKW9BQ9F5",
-        "title": "Funda de piel azul",
-        "price": "79.99"
-      },
-      {
-        "SKU": "IOKW9BQ9F6",
-        "title": "Funda de piel verde",
-        "price": "79.99"
-      }
-      ,
-      {
-        "SKU": "IOKW9BQ9F7",
-        "title": "Funda de piel amarilla",
-        "price": "79.99"
-      }
-    ]
-  };
-  const responseAPI= respuesta.json();
-const currency = responseAPI.currency;
-const products = responseAPI.products;
-instanciaCarrito.setCurrency(currency);
-*/
+const container = document.querySelector('.productsList');
 //https://jsonblob.com/019bea66-482d-76ff-9a09-7e8e6419f86b
 
-//Implementar lógica de la llamada rest api
-const  promesa_peticion  = fetch( 'https://api.jsonblob.com/019bea66-482d-76ff-9a09-7e8e6419f86b' );
+const url= 'https://api.jsonblob.com/019bea66-482d-76ff-9a09-7e8e6419f86b';
 
-console.log( promesa_peticion )
+//Implementar lógica de la llamada rest api
+const  promesa_peticion  = fetch( url );
+
 promesa_peticion.then( ( respuesta )=>{
 // Cuando va bien 
-    console.log(respuesta)
     if( respuesta.status === 200 ){
-        console.log('OK')
-          
         respuesta.json().then( (data)=>{
             console.log(data);
             const responseAPI= data;
@@ -230,7 +181,7 @@ function attachCartButtonHandlers(container, instanciaCarrito) {
     bothButtons.forEach(b => b.dataset.qty = newQty);
     bothButtons.forEach(b => b.dataset.subTotal = newQty*price);
     
-    // ✅ NUEVA LÓGICA: Deshabilitar botón minus cuando qty=0
+    // NUEVA LÓGICA: Deshabilitar botón minus cuando qty=0
     const btnMinus = article.querySelector('.cartItemBtnMinus');
     if (newQty === 0) {
       btnMinus.classList.add('disabled');  // Añadir clase CSS
@@ -273,7 +224,7 @@ function attachCartButtonHandlers(container, instanciaCarrito) {
   });
 }
 
-const container = document.querySelector('.productsList');
+
 attachCartButtonHandlers(container, instanciaCarrito);
 // implementamos la lógica del renderizado de carrito
 
