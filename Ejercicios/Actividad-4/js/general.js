@@ -3,6 +3,7 @@ import Carrito from './Carrito.js';
 const instanciaCarrito = new Carrito();
 console.log(instanciaCarrito);
 console.log('Script de carrito cargado correctamente');
+/*
 const responseAPI= 
 {
     "currency": "€",
@@ -45,48 +46,53 @@ const responseAPI=
       }
     ]
   };
-
+  const responseAPI= respuesta.json();
 const currency = responseAPI.currency;
 const products = responseAPI.products;
 instanciaCarrito.setCurrency(currency);
+*/
+//https://jsonblob.com/019bea66-482d-76ff-9a09-7e8e6419f86b
 
-  // creamos esta funicón por si necesitamosbuscar información en la respuesta de la api, en el listado de productos, mediante el sku (id)
+//Implementar lógica de la llamada rest api
+const  promesa_peticion  = fetch( 'https://api.jsonblob.com/019bea66-482d-76ff-9a09-7e8e6419f86b' );
+
+console.log( promesa_peticion )
+promesa_peticion.then( ( respuesta )=>{
+// Cuando va bien 
+    console.log(respuesta)
+    if( respuesta.status === 200 ){
+        console.log('OK')
+          
+        respuesta.json().then( (data)=>{
+            console.log(data);
+            const responseAPI= data;
+          const currency = responseAPI.currency;
+          const products = responseAPI.products;
+          instanciaCarrito.setCurrency(currency);
+          renderApiItems(products, '.productsList');
+        } ).catch( (error)=>{
+            console.log(error)
+        } )
+
+
+    }
+
+}).catch( (error)=>{
+// ERROR
+    console.log("error")
+    console.log(error)
+} );
+
+// Uso
+
+
+// creamos esta funicón por si necesitamosbuscar información en la respuesta de la api, en el listado de productos, mediante el sku (id)
 
 function findSKU(SKU) {
   return products.find(product => product.SKU === SKU);
 }
   
 // creamos esta función para el pintado del 'grid'? 'listado de productos', según lo obtenido de la llamada API
-
-function renderCartItemsPrevious(products, containerSelector) {
-  const container = document.querySelector(containerSelector);
-  if (!container) return;
-
-  container.innerHTML = ''; // limpiar previo
-
-  products.forEach(product => {
-    const article = document.createElement('article');
-    article.className = 'cartItem';
-
-    article.innerHTML = `
-      <div class="cartItemInfo">
-        <h2 class="cartItemTitle">${product.title}</h2>
-        <p class="cartItemRef">Ref: ${product.SKU}</p>
-      </div>
-
-      <div class="cartItemQty">
-        <button class="cartItemBtn cartItemBtnMinus">-</button>
-        <span class="cartItemCount">0</span>
-        <button class="cartItemBtn cartItemBtnPlus">+</button>
-      </div>
-
-      <div class="cartItemUnitPrice">${product.price}€</div>
-      <div class="cartItemTotal">0 €</div>
-    `;
-
-    container.appendChild(article);
-  });
-}
 /**
  * Función para crear el listado, pero usando createElement y appenChild,
  * e implementando los data-atributes para la funcionallidad de los botones
@@ -94,7 +100,7 @@ function renderCartItemsPrevious(products, containerSelector) {
  * @param {*} containerSelector 
  * @returns 
  */
-function renderCartItems(products, containerSelector) {
+function renderApiItems(products, containerSelector) {
   const container = document.querySelector(containerSelector);
   if (!container) return;
 
@@ -176,7 +182,7 @@ function renderCartItems(products, containerSelector) {
 
 // renderizamos el listado de productos
 
-renderCartItems(products, '.productsList');
+//renderCartItems(products, '.productsList');
 
 
 /** implementamos la lógica de los botones
