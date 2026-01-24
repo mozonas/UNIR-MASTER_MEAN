@@ -258,6 +258,12 @@ function attachCartButtonHandlers(container, instanciaCarrito) {
   });
 }
 
+/**
+ * Esta función es necesaria para actualizar los productos en el listado de la web, cuando interactuamos con los botoens + -
+ * @param {*} article 
+ * @param {*} SKU 
+ * @param {*} instanciaCarrito 
+ */
 function updateArticleUI(article, SKU, instanciaCarrito) {
   
   const productoCarrito = instanciaCarrito.findProductBySKU(SKU);
@@ -303,38 +309,38 @@ function updateArticleUI(article, SKU, instanciaCarrito) {
  */
 
 function pintarCarrito(instanciaCarrito) {
-    const summaryList = document.querySelector('.summaryList');
-    const summaryTotalValue = document.querySelector('.summaryTotalValue');
-    
-    summaryList.innerHTML = '';
-    let total = 0;
-    const productos= instanciaCarrito.getProductos();
-    if (!productos || !Array.isArray(productos)) {
-        summaryTotalValue.textContent = `0.00 ${instanciaCarrito.currency}`;
-        return;
+  const summaryList = document.querySelector('.summaryList');
+  const summaryTotalValue = document.querySelector('.summaryTotalValue');
+
+  summaryList.innerHTML = '';
+  let total = 0;
+  const productos= instanciaCarrito.getProductos();
+  if (!productos || !Array.isArray(productos)) {
+      summaryTotalValue.textContent = `0.00 ${instanciaCarrito.currency}`;
+      return;
     }
-    
-productos.forEach(producto => {
-    // VALIDAR subTotal (precio * qty)
-    if (!producto || !producto.title || typeof producto.subTotal !== 'number') {
-        return;
+
+    productos.forEach(producto => {
+      // VALIDAR subTotal (precio * qty)
+      if (!producto || !producto.title || typeof producto.subTotal !== 'number') {
+      return;
     }
-    
+
     const li = document.createElement('li');
     li.className = 'summaryRow';
-    
+
     const spanLabel = document.createElement('span');
     spanLabel.className = 'summaryLabel';
     spanLabel.textContent = producto.title;
-    
+
     const spanValue = document.createElement('span');
     spanValue.className = 'summaryValue';
     spanValue.textContent = `${producto.subTotal.toFixed(2)}€`;
-    
+
     li.appendChild(spanLabel);
     li.appendChild(spanValue);
     summaryList.appendChild(li);
-    
+
     total += producto.subTotal;
   });
 
