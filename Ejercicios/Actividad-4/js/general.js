@@ -1,75 +1,25 @@
 'useStrict';
 import Carrito from './Carrito.js';
-const instanciaCarrito = new Carrito();
-console.log(instanciaCarrito);
-console.log('Script de carrito cargado correctamente');
-/*
-const responseAPI= 
-{
-    "currency": "€",
-    "products": [
-      {
-        "SKU": "0K3QOSOV4V",
-        "title": "iFhone 13 Pro",
-        "price": "938.99"
-      },
-      {
-        "SKU": "TGD5XORY1L",
-        "title": "Cargador",
-        "price": "49.99"
-      },
-      {
-        "SKU": "IOKW9BQ9F3",
-        "title": "Funda de piel",
-        "price": "79.99"
-      },
-      {
-        "SKU": "IOKW9BQ9F4",
-        "title": "Funda de piel roja",
-        "price": "79.99"
-      },
-      {
-        "SKU": "IOKW9BQ9F5",
-        "title": "Funda de piel azul",
-        "price": "79.99"
-      },
-      {
-        "SKU": "IOKW9BQ9F6",
-        "title": "Funda de piel verde",
-        "price": "79.99"
-      }
-      ,
-      {
-        "SKU": "IOKW9BQ9F7",
-        "title": "Funda de piel amarilla",
-        "price": "79.99"
-      }
-    ]
-  };
-  const responseAPI= respuesta.json();
-const currency = responseAPI.currency;
-const products = responseAPI.products;
-instanciaCarrito.setCurrency(currency);
-*/
+
+const container = document.querySelector('.productsList');
 //https://jsonblob.com/019bea66-482d-76ff-9a09-7e8e6419f86b
 
-//Implementar lógica de la llamada rest api
-const  promesa_peticion  = fetch( 'https://api.jsonblob.com/019bea66-482d-76ff-9a09-7e8e6419f86b' );
+const url= 'https://api.jsonblob.com/019bea66-482d-76ff-9a09-7e8e6419f86b';
 
-console.log( promesa_peticion )
+//Implementar lógica de la llamada rest api
+const  promesa_peticion  = fetch( url );
+
 promesa_peticion.then( ( respuesta )=>{
 // Cuando va bien 
-    console.log(respuesta)
     if( respuesta.status === 200 ){
-        console.log('OK')
-          
         respuesta.json().then( (data)=>{
-            console.log(data);
-            const responseAPI= data;
+          const responseAPI= data;
           const currency = responseAPI.currency;
           const products = responseAPI.products;
+          const instanciaCarrito = new Carrito(products);
           instanciaCarrito.setCurrency(currency);
           renderApiItems(products, '.productsList');
+          attachCartButtonHandlers(container, instanciaCarrito);
         } ).catch( (error)=>{
             console.log(error)
         } )
@@ -86,7 +36,7 @@ promesa_peticion.then( ( respuesta )=>{
 // Uso
 
 
-// creamos esta funicón por si necesitamosbuscar información en la respuesta de la api, en el listado de productos, mediante el sku (id)
+// creamos esta función por si necesitamosbuscar información en la respuesta de la api, en el listado de productos, mediante el sku (id)
 
 function findSKU(SKU) {
   return products.find(product => product.SKU === SKU);
@@ -196,7 +146,7 @@ function renderApiItems(products, containerSelector) {
     }
 * que tendremos que modificar para que haga una búsqueda anterior por sku para ver si existe, si existe, se hace un update, sino, se hace el push
 */
-function attachCartButtonHandlers(container, instanciaCarrito) {
+function attachCartButtonHandlersPrevious(container, instanciaCarrito) {
   container.addEventListener('click', (e) => {
     const btn = e.target.closest('.cartItemBtn');
     if (!btn) return;
@@ -212,6 +162,7 @@ function attachCartButtonHandlers(container, instanciaCarrito) {
     const SKU = btn.dataset.sku;
     const price = parseFloat(btn.dataset.price);
     const title = btn.dataset.title;
+    //según lo comentado en clase, la cantidad debe de leerse del carrito
     const currentQty = parseInt(btn.dataset.qty) || 0;
     
     // Detectar + o - por segunda clase
@@ -230,7 +181,7 @@ function attachCartButtonHandlers(container, instanciaCarrito) {
     bothButtons.forEach(b => b.dataset.qty = newQty);
     bothButtons.forEach(b => b.dataset.subTotal = newQty*price);
     
-    // ✅ NUEVA LÓGICA: Deshabilitar botón minus cuando qty=0
+    // NUEVA LÓGICA: Deshabilitar botón minus cuando qty=0
     const btnMinus = article.querySelector('.cartItemBtnMinus');
     if (newQty === 0) {
       btnMinus.classList.add('disabled');  // Añadir clase CSS
@@ -273,8 +224,76 @@ function attachCartButtonHandlers(container, instanciaCarrito) {
   });
 }
 
-const container = document.querySelector('.productsList');
-attachCartButtonHandlers(container, instanciaCarrito);
+//24012026 nueva función attachCartButtonHandlers
+/**
+ * 
+ * @param {*} container 
+ * @param {*} instanciaCarrito 
+ */
+function attachCartButtonHandlers(container, instanciaCarrito) {
+  container.addEventListener('click', (e) => {
+    const btn = e.target.closest('.cartItemBtn');
+    if (!btn) return;
+
+    const SKU = btn.dataset.sku;
+    const article = btn.closest('.cartItem');
+    const isPlus = btn.classList.contains('cartItemBtnPlus');
+    
+    console.log('SKU:', SKU, 'isPlus:', isPlus);
+    
+    const productoCarrito = instanciaCarrito.findProductBySKU(SKU);
+    const currentQty = productoCarrito ? productoCarrito.qty : 0;
+    const newQty = isPlus ? currentQty + 1 : Math.max(0, currentQty - 1);
+    
+    console.log('currentQty:', currentQty, 'newQty:', newQty);
+    
+    if (newQty > 0) {
+      instanciaCarrito.addProductos({ SKU, qty: newQty });
+    } else {
+      instanciaCarrito.removeProductos(SKU);
+    }
+    
+    updateArticleUI(article, SKU, instanciaCarrito);
+    pintarCarrito(instanciaCarrito);
+  });
+}
+
+function updateArticleUI(article, SKU, instanciaCarrito) {
+  
+  const productoCarrito = instanciaCarrito.findProductBySKU(SKU);
+  console.log('Producto en carrito:', productoCarrito);  // ← 7
+  const count = article.querySelector('.cartItemCount');
+  const total = article.querySelector('.cartItemTotal');
+  const btnMinus = article.querySelector('.cartItemBtnMinus');
+  
+  // LEER DEL CARRITO (no DOM)
+
+  const productoAPI = instanciaCarrito.findApiProductBySKU(SKU);
+  
+  const qty = productoCarrito ? productoCarrito.qty : 0;
+  const price = productoAPI ? parseFloat(productoAPI.price) : 0;
+  
+  // ACTUALIZAR DOM
+  count.textContent = qty;                          
+  total.textContent = `${(qty * price).toFixed(2)} €`;
+  
+  // DATA-QTY EN BOTONES
+  const bothButtons = article.querySelectorAll('.cartItemBtn');
+  bothButtons.forEach(btn => {
+    btn.dataset.qty = qty;
+  });
+  
+  // BOTÓN MINUS
+  if (qty === 0) {
+    btnMinus.disabled = true;
+    btnMinus.classList.add('disabled');
+  } else {
+    btnMinus.disabled = false;
+    btnMinus.classList.remove('disabled');
+  }
+}
+
+
 // implementamos la lógica del renderizado de carrito
 
 /**
@@ -289,38 +308,37 @@ function pintarCarrito(instanciaCarrito) {
     
     summaryList.innerHTML = '';
     let total = 0;
-    
-    if (!instanciaCarrito.productos || !Array.isArray(instanciaCarrito.productos)) {
+    const productos= instanciaCarrito.getProductos();
+    if (!productos || !Array.isArray(productos)) {
         summaryTotalValue.textContent = `0.00 ${instanciaCarrito.currency}`;
         return;
     }
     
-    instanciaCarrito.productos.forEach(producto => {
-        // VALIDAR subTotal (precio * qty)
-        if (!producto || !producto.title || typeof producto.subTotal !== 'number') {
-            console.log('Producto inválido:', producto);
-            return;
-        }
-        
-        const li = document.createElement('li');
-        li.className = 'summaryRow';
-        
-        const spanLabel = document.createElement('span');
-        spanLabel.className = 'summaryLabel';
-        spanLabel.textContent = producto.title;
-        
-        const spanValue = document.createElement('span');
-        spanValue.className = 'summaryValue';
-        spanValue.textContent = `${producto.subTotal.toFixed(2)}€`;
-        
-        li.appendChild(spanLabel);
-        li.appendChild(spanValue);
-        summaryList.appendChild(li);
-        
-        total += producto.subTotal;  // ← SUMAR subTotal, NO getTotal()
-    });
+productos.forEach(producto => {
+    // VALIDAR subTotal (precio * qty)
+    if (!producto || !producto.title || typeof producto.subTotal !== 'number') {
+        return;
+    }
     
-    summaryTotalValue.textContent = `${total.toFixed(2)} ${instanciaCarrito.currency}`;
+    const li = document.createElement('li');
+    li.className = 'summaryRow';
+    
+    const spanLabel = document.createElement('span');
+    spanLabel.className = 'summaryLabel';
+    spanLabel.textContent = producto.title;
+    
+    const spanValue = document.createElement('span');
+    spanValue.className = 'summaryValue';
+    spanValue.textContent = `${producto.subTotal.toFixed(2)}€`;
+    
+    li.appendChild(spanLabel);
+    li.appendChild(spanValue);
+    summaryList.appendChild(li);
+    
+    total += producto.subTotal;
+  });
+
+  summaryTotalValue.textContent = `${total.toFixed(2)} ${instanciaCarrito.currency}`;
 }
 
 
