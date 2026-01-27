@@ -7,40 +7,67 @@ const container = document.querySelector('.productsList');
 const url= 'https://api.jsonblob.com/019bea66-482d-76ff-9a09-7e8e6419f86b';
 
 //Implementar lógica de la llamada rest api
-const  promesa_peticion  = fetch( url );
+const  promesa_peticion  = fetch(url);
 
-promesa_peticion.then( ( respuesta )=>{
-// Cuando va bien 
-    if( respuesta.status === 200 ){
-        respuesta.json().then( (data)=>{
-          const responseAPI= data;
-          const currency = responseAPI.currency;
-          const products = responseAPI.products;
-          const instanciaCarrito = new Carrito(products);
-          instanciaCarrito.setCurrency(currency);
-          renderApiItems(products, '.productsList');
-          attachCartButtonHandlers(container, instanciaCarrito);
-        } ).catch( (error)=>{
-            console.log(error)
-        } )
-
-
+promesa_peticion
+  .then((respuesta) => {
+    // Verificar status HTTP ANTES de procesar
+    if (!respuesta.ok) {
+      throw new Error(`Error HTTP: ${respuesta.status} ${respuesta.statusText}`);
     }
-
-}).catch( (error)=>{
-// ERROR
-    console.log("error")
-    console.log(error)
-} );
+    
+    return respuesta.json(); // Solo si ok
+  })
+  .then((data) => {
+    // Éxito total
+    const responseAPI = data;
+    const currency = responseAPI.currency;
+    const products = responseAPI.products;
+    
+    const instanciaCarrito = new Carrito(products);
+    instanciaCarrito.setCurrency(currency);
+    renderApiItems(products, '.productsList');
+    attachCartButtonHandlers(container, instanciaCarrito);
+  })
+  .catch((error) => {
+    // ÚNICO catch para TODOS los errores
+    console.error('Error en petición:', error);
+    
+    // Pasar STRING, no objeto Error
+    const mensajeError = error.message || 'Error desconocido al cargar productos';
+    mostrarPopupError(mensajeError);
+  });
 
 // Uso
 
-
-// creamos esta función por si necesitamosbuscar información en la respuesta de la api, en el listado de productos, mediante el sku (id)
-
-function findSKU(SKU) {
-  return products.find(product => product.SKU === SKU);
+function mostrarPopupError(stringError){
+    const nodePopUp = document.querySelector('.mainPopUp');
+    const nodeText =document.querySelector('.imgPopupText');
+    nodeText.textContent = stringError;
+    if (nodePopUp) {
+        nodePopUp.classList.add('active');
+    } else {
+        console.error('mainPopUp no encontrado');
+    }
 }
+
+function removePopupError(stringError){
+    const nodePopUp = document.querySelector('.mainPopUp');
+    const nodeText =document.querySelector('.imgPopupText');
+    nodeText.textContent = stringError;
+    if (nodePopUp) {
+        nodePopUp.classList.remove('active');
+    } else {
+        console.error('mainPopUp no encontrado');
+    }
+}
+
+const nodeButtonsPopUp = document.querySelectorAll('.showClosePopUp');
+nodeButtonsPopUp.forEach(boton => {
+    boton.addEventListener('click', function() {
+        removePopupError('');
+    });
+});
   
 // creamos esta función para el pintado del 'grid'? 'listado de productos', según lo obtenido de la llamada API
 /**
