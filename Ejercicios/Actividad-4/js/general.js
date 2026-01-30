@@ -4,8 +4,9 @@ import Carrito from './Carrito.js';
 const container = document.querySelector('.productsList');
 //https://jsonblob.com/019bea66-482d-76ff-9a09-7e8e6419f86b
 
-const url= 'https://api.jsonblob.com/019bea66-482d-76ff-9a09-7e8e6419f86b';
+//const url= 'https://api.jsonblob.com/019bea66-482d-76ff-9a09-7e8e6419f86b';
 
+const url="./api/data.json"
 //Implementar lógica de la llamada rest api
 const  promesa_peticion  = fetch(url);
 
