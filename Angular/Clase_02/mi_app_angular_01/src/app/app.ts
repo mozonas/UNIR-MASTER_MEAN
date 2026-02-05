@@ -1,14 +1,14 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { ContadorComponent } from './components/contador/contador.component';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [ContadorComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('mi_app_angular_01');
+  //protected readonly title = signal('mi_app_angular_01');
   nombre: string ='Miguel Ozonas Gregori';
   apellido: string ='Ozonas'
   nombres: string[] = ['Pedro','Pablo']
@@ -17,3 +17,4 @@ export class App {
     return this.nombre+' ' + this.apellido
   }
 }
+
