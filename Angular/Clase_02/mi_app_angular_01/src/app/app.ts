@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { ContadorComponent } from './components/contador/contador.component';
+import { HobbiesListComponent } from './components/hobbie-list/hobbie-list.component';
+
 
 @Component({
   selector: 'app-root',
-  imports: [ContadorComponent],
+  imports: [ContadorComponent,HobbiesListComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

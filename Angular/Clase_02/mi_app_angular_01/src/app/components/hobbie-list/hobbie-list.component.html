@@ -1,0 +1,19 @@
+<div class="container">
+  <aside>
+    <!-- formulario TWO WAY BINDING-->
+    <div>
+      <input type="text" placeholder="introduce tu nombre" [(ngModel)]="hobby.nombre">
+    </div>
+    <div>
+      <input type="text" placeholder="introduce tu afición" [(ngModel)]="hobby.aficion">
+    </div>
+    <button (click)="guardarData()">Enviar</button>
+  </aside>
+  <ul>
+    @for (hobby of arrayAficiones; track hobby.nombre) {
+        <li>{{ hobby.nombre }} - {{ hobby.aficion }}</li>
+    }
+  </ul>
+
+
+</div>
