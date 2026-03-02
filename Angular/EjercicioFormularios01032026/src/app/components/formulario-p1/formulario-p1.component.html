@@ -1,0 +1,27 @@
+<p>formulario-p1 works!</p>
+<form class="formP1" novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" name="username" formControlName="username">
+        @if(checkControl('username', 'required' )){
+        <p class="error">Campo requerido</p>
+        }
+        @if(checkControl('username', 'minlength' )){
+        <p class="error">Campo con longitud minima de 3 caracteres</p>
+        }
+    </div>
+    <div>
+        <label for="email">Email:</label>  
+        <input type="text" name="email" formControlName="email">
+        @if(checkControl('email', 'required' )){
+        <p class="error">Campo requerido</p>
+        }
+        @if(checkControl('email', 'pattern' )){
+        <p class="error">Campo con formato de correo no válido</p>
+        }
+    </div>
+  
+
+
+    <button type="submit" [disabled]="form.invalid">Enviar</button>
+</form>
